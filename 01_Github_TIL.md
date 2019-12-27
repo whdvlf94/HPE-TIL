@@ -128,3 +128,25 @@
 
   
 
+## (3) Fork
+
+- push 권한이 없을 때, Fork를 통해 pull request 를 요청할 수 있다.
+
+  ```shell
+  $ git clone [github 주소]
+  $ cd [해당 directory]
+  $ code .
+  
+  #수정
+  
+  $ git add .
+  $ git commit -m "pull request"
+  $ git push origin master
+  
+  # github에서 New pull request 하면 요청 완료
+  ```
+
+  
+
+  
+
