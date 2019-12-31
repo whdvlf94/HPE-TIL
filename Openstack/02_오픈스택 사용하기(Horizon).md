@@ -56,7 +56,6 @@ network-scripts]# ovs-vsctl show
 
 <h4> 1.2 Horizon 접속 정보 </h4>
 
-
 ```shell
 홈 디렉토리
 
