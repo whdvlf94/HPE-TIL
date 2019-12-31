@@ -223,7 +223,8 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ---
 
 <h5> 2.2.1 프로젝트 생성 </h5>
-![캡처5](https://user-images.githubusercontent.com/58682321/71610249-ab94be80-2bd2-11ea-9bd4-27a2d60551cd.PNG)
+
+![캡처5](https://user-images.githubusercontent.com/58682321/71615493-fe7f6d80-2bf4-11ea-92a9-9d38898560b2.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
 
@@ -354,7 +355,7 @@ VPC :가상 네트워크
 
 
 
-![보안그룹](https://user-images.githubusercontent.com/58682321/71613211-67acb400-2be8-11ea-8bca-f43888b1dc86.PNG)
+![보안그룹](https://user-images.githubusercontent.com/58682321/71615528-05a67b80-2bf5-11ea-94bd-d9491096c19d.PNG)
 
 
 
@@ -363,7 +364,7 @@ VPC :가상 네트워크
 
 
 <h4> < http and ssh - class1 보안 그룹 ></h4>
-![보안그룹설정](https://user-images.githubusercontent.com/58682321/71613212-6b403b00-2be8-11ea-9091-b11b0df05a36.PNG)
+![보안그룹설정](https://user-images.githubusercontent.com/58682321/71615527-05a67b80-2bf5-11ea-8c1a-e207ce474c4a.PNG)
 
 - CIDR : 허용 IP 지정해서 들어올 수 있게 하는 방식
 - 보안 그룹 : 같은 보안 그룹 내에 있는 것만 접근이 가능한 방식. 같은 보안 그룹이 아니면 들어올 수 없다.
@@ -377,7 +378,7 @@ VPC :가상 네트워크
 
 
 <h4> < DB sg > - class1 보안 그룹 </h4>
-![보안 dbsg](https://user-images.githubusercontent.com/58682321/71613229-814dfb80-2be8-11ea-82ab-4dd380993253.PNG)
+![보안 dbsg](https://user-images.githubusercontent.com/58682321/71615526-050de500-2bf5-11ea-828e-c82df405e4d2.PNG)
 
 - 외부에서 DB에 접근하는 것은 위험하므로 class1 보안 그룹에 해당되는 것만 접근이 가능하도록 지정해준다.
 
