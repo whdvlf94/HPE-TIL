@@ -93,13 +93,13 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
   
   \- Quotas 수정
 
-![캡처](./img/캡처.PNG)
+![캡처](https://user-images.githubusercontent.com/58682321/71610008-a59dde00-2bd0-11ea-9cdb-15281e7e18b5.PNG)
 
 ​		
 
 ​		**< Openstack>**
 
-![캡처1](./img/캡처1.PNG)
+![캡처1](https://user-images.githubusercontent.com/58682321/71610009-a59dde00-2bd0-11ea-9203-0f44cecdb265.PNG)
 
 >  **Linux** : 사용자의 account가 저장된 디렉토리 : /etc/passwd, group, shadow 
 
@@ -131,7 +131,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
   
   - 시스템 정보
   
-    ![캡처3](./img/캡처3.PNG)
+    ![캡처3](https://user-images.githubusercontent.com/58682321/71610010-a6367480-2bd0-11ea-823f-5f6f53a23f1e.PNG)
   
     >  Nova에서 중요한 프로세스
   
@@ -157,7 +157,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 ## 3. Horizon으로 사용 및 관리하기
 
-![캡처4](./img/캡처4.PNG)
+![캡처4](https://user-images.githubusercontent.com/58682321/71610007-a59dde00-2bd0-11ea-80fa-d73304b6f720.PNG)
 
 > Openstack 서비스 사용 순서
 
@@ -192,7 +192,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ---
 
 <h5> 3.1 프로젝트 생성 </h5>
-![캡처5](C:\Users\HPE\TIL\img\캡처4.PNG)
+![캡처5](https://user-images.githubusercontent.com/58682321/71610007-a59dde00-2bd0-11ea-80fa-d73304b6f720.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
 
