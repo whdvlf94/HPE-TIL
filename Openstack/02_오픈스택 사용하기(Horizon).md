@@ -196,7 +196,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ---
 
 <h5> 3.1 프로젝트 생성 </h5>
-![캡처5](https://user-images.githubusercontent.com/58682321/71610007-a59dde00-2bd0-11ea-80fa-d73304b6f720.PNG)
+![캡처5](https://user-images.githubusercontent.com/58682321/71610205-6e303100-2bd2-11ea-9f4e-e8ca488ee1ef.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
 
