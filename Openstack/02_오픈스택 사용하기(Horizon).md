@@ -55,7 +55,6 @@ network-scripts]# ovs-vsctl show
 
 
 <h4> 1.2 Horizon 접속 정보 </h4>
-
 ```shell
 홈 디렉토리
 
@@ -94,13 +93,13 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
   
   \- Quotas 수정
 
-![캡처](C:\Users\HPE\TIL\img\캡처.PNG)
+![캡처](./img/캡처.PNG)
 
 ​		
 
 ​		**< Openstack>**
 
-![캡처1](C:\Users\HPE\TIL\img\캡처1.PNG)
+![캡처1](./img/캡처1.PNG)
 
 >  **Linux** : 사용자의 account가 저장된 디렉토리 : /etc/passwd, group, shadow 
 
@@ -110,7 +109,6 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 - <h3>2.1.2 관리 menu</h3> : admin에게만 권한이 있다. (리눅스의 경우는 root 계정)
 
-  
 - **Compute** : Nova 서비스
   
   - 하이퍼바이저 : Qemu, KVM
@@ -133,7 +131,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
   
   - 시스템 정보
   
-    ![캡처3](C:\Users\HPE\TIL\img\캡처3.PNG)
+    ![캡처3](./img/캡처3.PNG)
   
     >  Nova에서 중요한 프로세스
   
@@ -159,7 +157,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 ## 3. Horizon으로 사용 및 관리하기
 
-![캡처4](C:\Users\HPE\TIL\img\캡처4.PNG)
+![캡처4](./img/캡처4.PNG)
 
 > Openstack 서비스 사용 순서
 
@@ -194,7 +192,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ---
 
 <h5> 3.1 프로젝트 생성 </h5>
-![캡처5](C:\Users\HPE\TIL\img\캡처5.PNG)
+![캡처5](C:\Users\HPE\TIL\img\캡처4.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
 
@@ -206,7 +204,6 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 - mgr1 : admin,
 
 <h5> 3.3 Flavor 생성 </h5>
-
 - a.tiny :  Flavor 접근 권한 -> pro1 선택 (pro1 프로젝트에서만 flavor를 사용할 수 있다.)
 - a.nano
 
