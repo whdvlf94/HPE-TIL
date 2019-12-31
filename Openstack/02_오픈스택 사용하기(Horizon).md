@@ -55,16 +55,20 @@ network-scripts]# ovs-vsctl show
 
 
 <h4> 1.2 Horizon 접속 정보 </h4>
+
+
 ```shell
 홈 디렉토리
 
-# cat keystonerc_admin
+# cat keystonerc_admin    
 
-	export OS_USERNAME=admin #Horizon 유저 계정
+	export OS_USERNAME=admin #Horizon 유저 계정    
 	~
 export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ~
 ```
+
+
 
 - export : local 변수를 global 변수로 사용하기 위한 명령어
 
