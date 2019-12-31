@@ -55,6 +55,7 @@ network-scripts]# ovs-vsctl show
 
 
 <h4> 1.2 Horizon 접속 정보 </h4>
+
 ```shell
 홈 디렉토리
 
@@ -64,6 +65,7 @@ network-scripts]# ovs-vsctl show
 	~
 export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ~
+
 ```
 
 
@@ -194,6 +196,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 ---
 
 <h5> 3.1 프로젝트 생성 </h5>
+
 ![캡처5](https://user-images.githubusercontent.com/58682321/71610249-ab94be80-2bd2-11ea-9bd4-27a2d60551cd.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
