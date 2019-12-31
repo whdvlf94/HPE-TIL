@@ -1,5 +1,36 @@
 # 오픈스택 사용하기
 
+**목 차**
+
+```
+4.오픈스택 서비스 사용하기
+
+Horizon 접속
+Horizon 메뉴
+Openstack 용어 정의
+프로젝트/사용자 /Flavor 생성 
+
+
+--------------------------------------------------------------------------
+네트워크/라우터
+Floating IP용: ext1->subext1->10.0.0.0/24,gw: 10.0.0.2, dns:10.0.0.2,dhcp X, 사용 IP pool(10.0.0.210,10.0.0.220),외부네트워크
+Fixed IP 용: int1->subint1->192.168.0.0/24,gw:192.168.0.254,dns:10.0.0.2,dhcp 활성화)
+router1 생성
+외부 네트워크과 router간 연결: 게이트웨이 설정
+내부 네트워크와 router간 연결: 인터페이스 추가
+--------------------------------------------------------------------------
+
+
+/보안그룹/Floating IP 생성
+Keypair 생성
+이미지
+인스턴스 시작
+볼륨/snapshot 생성
+Swift 사용하기
+```
+
+
+
 ## 1. 오픈스택 network 설정
 
 #### 1.1 network 설정
@@ -55,7 +86,6 @@ network-scripts]# ovs-vsctl show
 
 
 <h4> 1.2 Horizon 접속 정보 </h4>
-
 ```shell
 홈 디렉토리
 
@@ -82,7 +112,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 
 
-## 2. Horizon(DashBoard) 사용
+## 2. 오픈스택 서비스 사용
 
 
 
@@ -155,11 +185,7 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 
 
-
-
----
-
-## 3. Horizon으로 사용 및 관리하기
+### 2.2 Horizon으로 사용 및 관리하기
 
 ![캡처4](https://user-images.githubusercontent.com/58682321/71610007-a59dde00-2bd0-11ea-80fa-d73304b6f720.PNG)
 
@@ -191,24 +217,31 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 
 
-### < 관리자 Menu >
+#### < 관리자 Menu >
 
 ---
 
-<h5> 3.1 프로젝트 생성 </h5>
-
+<h5> 2.2.1 프로젝트 생성 </h5>
 ![캡처5](https://user-images.githubusercontent.com/58682321/71610249-ab94be80-2bd2-11ea-9bd4-27a2d60551cd.PNG)
 
 - 프로젝트 맴버에 원하는 사용자를 추가할 수 있으며, 사용자의 role를 설정할 수 있다.
 
 - Quotas 수정 : VCPUs 4 , 인스턴스 4
+
 - pro1 프로젝트 생성
 
-<h5> 3.2 사용자 생성 </h5>
-- stack1 : member
-- mgr1 : admin,
+  
 
-<h5> 3.3 Flavor 생성 </h5>
+<h5> 사용자 생성 </h5>
+- stack1 : member
+  
+  - stack1 계정에서는 인스턴스가 보이지 않는다. 이는 Openstack 설치 과정에서 install 하지 않았기 때문. 따라서 일반 사용자(stack1) 계정에서 인스턴스를 사용하기 위해서는 설치 과정에 install을 해야한다.
+  
+- mgr1 : admin(pro1 프로젝트 내에서만 관리자(admin) 역할을 한다.)
+
+  
+
+<h5>  Flavor 생성 </h5>
 - a.tiny :  Flavor 접근 권한 -> pro1 선택 (pro1 프로젝트에서만 flavor를 사용할 수 있다.)
 - a.nano
 
@@ -217,5 +250,235 @@ export OS_PROJECT_NAME=admin #Horizon 프로젝트 계정
 
 
 
-stack1 계정에서는 인스턴스가 보이지 않는다. 이는 Openstack 설치 과정에서 install 하지 않았기 때문. 따라서 일반 사용자(stack1) 계정에서 인스턴스를 사용하기 위해서는 설치 과정에 install을 해야한다.
 
+
+
+
+
+
+## 네트워크 /라우터
+#### 3. 네트워크/라우터 생성
+
+- Tenant Private Network 생성(가상 네트워크 2개)
+
+  
+
+두 네트워크를 연결하기 위해서 **라우터**를 이용한다.
+
+VPC :가상 네트워크
+
+> A 클래스 사설 IP : 10
+>
+> B 클래스 사설 IP : 172.16 ~ 172.31
+>
+> C 클래스 사설 IP : 192.168.0 ~ 255
+
+
+
+
+
+
+
+
+![asd](https://user-images.githubusercontent.com/58682321/71613204-624f6980-2be8-11ea-818c-34f31daa5b29.jpg)
+
+
+
+##### int1 (private) <- subint1
+
+- 192.168.0.0/24, Gateway(Router)
+
+- 192.168.0.254
+
+- DNS : 10.0.0.2
+
+- DHCP
+
+- Fixed IP (사설 ip)
+
+  
+
+##### web
+
+- 192.168.0.1~253
+
+
+
+##### ext1 (subext1)
+
+- 외부 통신 (windows와 controller(CentOS))  -> xshell, ssh, web browser(windows)를 통해서 web에 접근이 가능한 상태로 만들어 준다.
+
+- 네트워크 주소 정해짐 : 10.0.0.0/24
+- Gateway : 10.0.0.2
+- DNS : 10.0.0.2
+- Floating IP (공인 ip)
+
+- DHCP(X) -> pool(210~220) : 10.0.0.201,10.0.0.220 (콤마 앞뒤로 스페이스 x)
+
+
+
+##### Router
+
+- 각 네트워크를 연결 (ext1 & int1)
+
+  
+
+##### 외부네트워크
+
+- 물리망과 연결이 필요 (br-ex와 ext1(Floating ip) 연결)
+
+  
+
+##### 게이트웨이 설정
+
+- 외부네트워크와 Router를 연결
+
+  
+
+##### 내부 인터페이스
+
+- 내부 인터페이스 추가 (Router와 int1(Fixed ip) 연결)
+
+---
+
+
+
+
+
+## 4. 보안그룹/Floating IP 생성
+
+
+
+- **int1(private)** : 보안 설정은 필수 -> 가상 내에서 host 이기 때문에 반드시 보안 설정을 해주어야 한다.
+
+
+
+![보안그룹](https://user-images.githubusercontent.com/58682321/71613211-67acb400-2be8-11ea-8bca-f43888b1dc86.PNG)
+
+
+
+
+
+
+
+<h4> < http and ssh - class1 보안 그룹 ></h4>
+![보안그룹설정](https://user-images.githubusercontent.com/58682321/71613212-6b403b00-2be8-11ea-9091-b11b0df05a36.PNG)
+
+- CIDR : 허용 IP 지정해서 들어올 수 있게 하는 방식
+- 보안 그룹 : 같은 보안 그룹 내에 있는 것만 접근이 가능한 방식. 같은 보안 그룹이 아니면 들어올 수 없다.
+
+- ALL ICMP : 3계층에서 Ping 테스트를 하는 규칙
+
+  
+
+  **-> 웹 서버에 적용할 보안 그룹 생성**
+
+
+
+<h4> < DB sg > - class1 보안 그룹 </h4>
+![보안 dbsg](https://user-images.githubusercontent.com/58682321/71613229-814dfb80-2be8-11ea-82ab-4dd380993253.PNG)
+
+- 외부에서 DB에 접근하는 것은 위험하므로 class1 보안 그룹에 해당되는 것만 접근이 가능하도록 지정해준다.
+
+---
+
+
+
+
+
+###  - Key pair 생성
+
+---
+
+- 프로젝트>Compute>키 페어>키 페어 생성 (파일명 : stack1-key1)
+  - Private_key 생성
+- 키 페어의 경우 **공개 키**와 **개인 키**가 다르다. **개인 키**는 관리자만 소유하는 것
+- 공개 키의 위치 :  . ssh/authorized_keys
+
+
+
+### - Floating IP 생성
+
+---
+
+- 프로젝트에 IP 할당(유동 IP) -> 10.0.0.210~220 으로 할당했다. 즉, 총 11개의 유동 IP가 할당이 된다.
+- 이처럼 Floating IP는 유한한 자원이기 때문에, 사용하지 않는 IP에 대해서는 과금이 부여가 된다.
+
+
+
+### - Image 생성 및 Instance 시작
+
+---
+
+>  Windows에서 다운 받은 .img 파일을 Openstack 내에 Glance repository에 저장하는 과정
+
+
+
+![glance](https://user-images.githubusercontent.com/58682321/71613234-8743dc80-2be8-11ea-8ca8-77956969e87a.PNG)
+
+- 부팅 소스 선택 : 이미지 -> Glance 서비스를 이용하겠다
+- 새로운 볼륨 생성 아니오 -> Local Disk storage를 사용
+
+
+
+
+
+![인스턴스 콘솔](https://user-images.githubusercontent.com/58682321/71613622-ec003680-2bea-11ea-8317-d7e0273b8271.PNG)
+
+- **Openstack 에서 vm을 시작**
+
+  
+
+
+
+![유동 ip](https://user-images.githubusercontent.com/58682321/71613878-0be42a00-2bec-11ea-9641-539482038ba0.PNG)
+
+
+
+- 유동 IP 연결 :  Floating IP 할당, 인스턴스가 외부로 나갈 때 유동 IP(공인 IP)로 나가게 된다.
+
+
+
+
+
+### - Volume 생성
+
+---
+
+> Cinder 서비스 사용. 
+
+
+
+![volume](https://user-images.githubusercontent.com/58682321/71613971-92007080-2bec-11ea-9a36-6236514f8434.PNG)
+
+- vm 내에서  저장공간(**local storage**)이 부족할 경우 Volume을 통해 해결
+
+**(※ local PC에서 하드웨어 저장 공간이 부족한 경우 외장 하드웨어를 사용하는 것과 같다.)**
+
+- Cinder 저장소는 Server 입장이다.  vm은 Client 입장
+
+  
+
+![vdb](https://user-images.githubusercontent.com/58682321/71614063-089d6e00-2bed-11ea-84b2-90f64f5e1b0d.PNG)
+
+- vm local storage : vda
+- volume storage 제공 : vdb
+
+**( ※ storage는 알파벳 순서대로 생성한다.)**
+
+
+
+### 5. Xshell 에서 ssh를 통해 cirros에 접속
+
+---
+> 보안그룹(class1)에서 Port22 을 허용했기 때문에 접속이 가능하다.
+
+
+
+``` shell
+# ip netns exec qrouter-f9f045a7-cfb4-4c50-a5e6-2214f57ff389 ssh cirros@10.0.0.211
+
+qrouter ~  :  외부 게이트 웨이 장치 ID
+ssh 를 통해 공인 IP(Floating IP)로 접속
+
+```
