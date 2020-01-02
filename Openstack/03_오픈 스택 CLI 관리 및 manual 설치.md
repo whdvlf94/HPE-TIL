@@ -1,12 +1,15 @@
 # Openstack CLI로 관리하기
 
-- identity 서비스(Keystone)
-- Image Service (Glance)
-- Block Storage (Cinder)
-- Network Service (Neutron)
-- Compute Service (Nova)
-- Object Storage (Swift)
-- Dashboard service (Horizon)
+| identity 서비스(Keystone)       |
+| ------------------------------- |
+| **Image Service (Glance)**      |
+| **Block Storage (Cinder)**      |
+| **Network Service (Neutron)**   |
+| **Compute Service (Nova)**      |
+| **Object Storage (Swift)**      |
+| **Dashboard service (Horizon)** |
+
+
 
 ---
 
@@ -22,7 +25,6 @@
 
 
 <h5> Identity Service 개념 </h5>
-
 - **사용자**
   - 들어온 요청이 어떤 사용자에 의해 만들어 졌는지 확인. 
   - 사용자는 로그인을 하면, 자원에 접근할 수 있는 **토큰**을 할당 받는다. 사용자는 해당 tenant로 할당 받을 수 있고 그 tenant에 속해있는 것처럼 작동할 수 있다.
@@ -60,7 +62,7 @@ DB로 부터 user list를 불러온다. 즉, mysql문을 사용하지 않아도 
 # vi keystonerc_admin
 ```
 
-![vi keystonerc](C:\Users\HPE\TIL\img\vi keystonerc.PNG)
+![Inkedkeystone_admin_LI](https://user-images.githubusercontent.com/58682321/71674358-54534180-2dbe-11ea-8b9e-e816eb9f4188.jpg)
 
 
 
@@ -83,7 +85,7 @@ DB로 부터 user list를 불러온다. 즉, mysql문을 사용하지 않아도 
 # openstack role list --project demo --user demo
 ```
 
-![demo](C:\Users\HPE\TIL\img\demo.PNG)
+![demo](https://user-images.githubusercontent.com/58682321/71674236-03dbe400-2dbe-11ea-9c02-42dee5ae5a4a.PNG)
 
 - Horizon(**Dashboard**) 을 이용하지 않고 User,Project를 생성할 수 있다.
 
@@ -154,7 +156,7 @@ DB로 부터 user list를 불러온다. 즉, mysql문을 사용하지 않아도 
 
 2. **VM workstation 실행**
 
-![m-cont](C:\Users\HPE\TIL\img\m-cont.PNG)
+![m-cont](https://user-images.githubusercontent.com/58682321/71674239-04747a80-2dbe-11ea-97f8-ab1362163ffd.PNG)
 
 ```shell
 # vi /etc/sysconfig/network-scripts/ifcfg-ens33
