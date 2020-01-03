@@ -1,17 +1,15 @@
 # Openstack CLI로 관리하기
 
-| identity 서비스(Keystone)       |
-| ------------------------------- |
-| **Image Service (Glance)**      |
-| **Block Storage (Cinder)**      |
-| **Network Service (Neutron)**   |
-| **Compute Service (Nova)**      |
-| **Object Storage (Swift)**      |
-| **Dashboard service (Horizon)** |
+| identity 서비스(Keystone)   |
+| --------------------------- |
+| Image Service (Glance)      |
+| Block Storage (Cinder)      |
+| Network Service (Neutron)   |
+| Compute Service (Nova)      |
+| Object Storage (Swift)      |
+| Dashboard service (Horizon) |
 
 
-
----
 
 
 
@@ -40,7 +38,7 @@
 
 ## 1. CLI 관리
 
-> sql 문을 이용하지 않고도 DB에 접근할 수 있도록 하는 것
+> Horizon(dashboard)를 이용하지 않고, CLI을 통해 sql 문을 이용하지 않고도 DB에 접근할 수 있도록 하는 것
 
 
 
