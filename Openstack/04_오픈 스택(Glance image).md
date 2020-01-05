@@ -4,7 +4,7 @@
 
 ## 0. Image Service(Glance)
 
-
+> Nova를 통해 생성되는 가상 머신은 Glance를 통해 가상 머신 이미지를 제공받고 관리한다.
 
 
 
