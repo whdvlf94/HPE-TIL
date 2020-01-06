@@ -15,25 +15,6 @@
 
 ### 0. Identity 서비스(Keystone)
 
-- 인증 서비스 Keystone
-
-  • 사용자 관리: 사용자와 그들의 권한을 추적한다.
-  • 서비스 카탈로그: 자신의 API  엔드포인트로 사용 가능한 서비스의 카탈로그를 제공한다.
-
-
-
-<h5> Identity Service 개념 </h5>
-- **사용자**
-  - 들어온 요청이 어떤 사용자에 의해 만들어 졌는지 확인. 
-  - 사용자는 로그인을 하면, 자원에 접근할 수 있는 **토큰**을 할당 받는다. 사용자는 해당 tenant로 할당 받을 수 있고 그 tenant에 속해있는 것처럼 작동할 수 있다.
-- 
-
-
-
------------------------ 내용 추가 -----------------
-
-
-
 
 
 ## 1. CLI 관리
@@ -93,7 +74,7 @@ DB로 부터 user list를 불러온다. 즉, mysql문을 사용하지 않아도 
 
 
 
-## 2. 오픈스택 설정 선행 조건(CentOS)
+## 2. 오픈스택 설정 선행 조건(CentOS) - Environment
 
 [docs.openstack](https://docs.openstack.org/install-guide/environment.html)
 

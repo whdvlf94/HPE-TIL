@@ -182,6 +182,17 @@ Windows에서 파일 확인 가능
 
 ※ 비밀번호 설정 주의할 것.
 
+```shell
+# vi /etc/nova/nova.conf
+
+[DEFAULT]
+enabled_apis = osapi_compute,metadata
+transport_url = rabbit://openstack:RABBIT_PASS@controller
+my_ip = 10.0.0.11
+use_neutron = true
+firewall_driver = nova.virt.firewall.NoopFirewallDriver
+```
+
 
 
 ```shell
@@ -216,7 +227,29 @@ Windows에서 파일 확인 가능
   vi /etc/sysconfig/network-scripts/ifcfg-ens33
   #UUID
   IPADDR=10.0.0.101
+  
+  # systemctl restart network
   ```
+
+
+
+- **Compute 노드를 추가하기 위한 사전 작업**
+
+```shell
+# yum install chrony
+# yum install centos-release-openstack-rocky
+# yum upgrade
+# yum install python-openstackclient
+# yum install openstack-selinux
+```
+
+**※ chrony** 
+
+​	\- 주기적으로 시스템의 시간을 조정하는 서비스
+
+​	\- 네트워크 액세스가 허용될 때 NTP 프로토콜을 이용하여 서버와 동기화를 수행
+
+
 
 
 
@@ -225,6 +258,7 @@ Windows에서 파일 확인 가능
 [docs.openstack-compute 설치](https://docs.openstack.org/nova/rocky/install/compute-install-rdo.html#install-and-configure-components)
 
 ```shell
+# yum install openstack-nova-compute
 # cd /etc/nova/
 # cp nova.conf nova.conf.old
 # scp controller:/etc/nova/nova.conf /etc/nova/nova.conf
@@ -232,21 +266,25 @@ Windows에서 파일 확인 가능
 
 vi /etc/nova/nova.conf
 -------
-my_ip=10.0.0.101
-vncserver_proxyclient_address = 10.0.0.101
+1254 my_ip=10.0.0.101
+11017 vncserver_proxyclient_address = 10.0.0.101
 -------
 
 위의 2개만 수정할 것. 나머지는 controller 에서 다 수정함
 (※ 수정한 내용을 scp를 통해 가져왔다)
 ```
 
-
-
-- 설치 완료가 진행되지 않는 경우
+ 
 
   ```shell
   # systemctl start libvirtd.service openstack-nova-compute.service
+  # systemctl start libvirtd.service 
+  # systemctl start openstack-nova-compute.service
   ```
+
+
+
+<h4> ※ 설치가 완료되지 않을 경우 </h4>
 
 - **controller (All-in-one)**
 
@@ -275,6 +313,8 @@ vncserver_proxyclient_address = 10.0.0.101
 [root@controller ~(keystone_admin)]# openstack compute service list --service nova-compute
 
 controller, compute1 state 상태가 up으로 되어 있으면 완료
+
+[root@controller ~(keystone_admin)]# su -s /bin/sh -c "nova-manage cell_v2 discover_hosts --verbose" nova
 ```
 
 
