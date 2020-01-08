@@ -62,7 +62,7 @@ $ docker image build -t helloworld:latest .
 - **Docker container run**
 
 ```shell
-$ docker container run hellowworld:latest
+$ docker container run helloworld:latest
 Hello, World!
 # run = create + start
 # container를 재시작 할 경우 start 명령어만 입력해주면 된다.
@@ -389,6 +389,52 @@ Windows에 있는 package.json 파일을 docker 디렉토리 내(**현재 디렉
 
 
 
+-  **home 디렉토리 설정**
+
+```dockerfile
+FROM node:alpine
+
+COPY ./package.json /home/node/package.json
+COPY ./index.js /home/node/index.js 
+# package, index 를 /home/node 디렉토리에 설치
+
+RUN npm install
+
+CMD ["npm", "start"]
+```
+
+
+
+```powershell
+> docker build -t whdvlf94/simpleweb:latest .
+> docker run -d -p 8080:8080 whdvlf94/simpleweb:latest
+> docker ps
+
+# container는 생성되지 않는다.
+# package, index 파일은 /home/node/ 에 생성되지만
+# npm install은 root directory에서 진행되기 때문에 설치가 진행되지 않는다.
+```
+
+
+
+- **해결 방법 - WORKDIR**
+
+  
+
+![workdir](https://user-images.githubusercontent.com/58682321/71875326-61c64e00-3167-11ea-89ea-c2a1ba9716e9.PNG)
+
+```powershell
+PS C:\Users\HPE\docker\day01\simpleweb> docker exec -it 4d8772041458 sh
+# 리눅스 접속
+# sh => shellscript
+/home/node #
+# root 디렉토리가 /home/node 로 변경된 것을 확인할 수 있다.
+```
+
+
+
+- **< none > image**
+
 ```powershell
 > docker build -t whdvlf94/simpleweb:latest .
 # dockerfile을 수정했기 때문에 다시 build 해주어야 한다.
@@ -455,52 +501,6 @@ Windows에 있는 package.json 파일을 docker 디렉토리 내(**현재 디렉
 > docker exec -it [container names] sh
 # container 접속, 리눅스가 실행된다.
 
-```
-
-
-
-
-
--  **home 디렉토리 설정**
-
-```dockerfile
-FROM node:alpine
-
-COPY ./package.json /home/node/package.json
-COPY ./index.js /home/node/index.js 
-# package, index 를 /home/node 디렉토리에 설치
-
-RUN npm install
-
-CMD ["npm", "start"]
-```
-
-
-
-```powershell
-> docker build -t whdvlf94/simpleweb:latest .
-> docker run -d -p 8080:8080 whdvlf94/simpleweb:latest
-> docker ps
-
-# container는 생성되지 않는다.
-# package, index 파일은 /home/node/ 에 생성되지만
-# npm install은 root directory에서 진행되기 때문에 설치가 진행되지 않는다.
-```
-
-
-
-- **해결 방법 - WORKDIR**
-
-  
-
-![workdir](https://user-images.githubusercontent.com/58682321/71875326-61c64e00-3167-11ea-89ea-c2a1ba9716e9.PNG)
-
-```powershell
-PS C:\Users\HPE\docker\day01\simpleweb> docker exec -it 4d8772041458 sh
-# 리눅스 접속
-# sh => shellscript
-/home/node #
-# root 디렉토리가 /home/node 로 변경된 것을 확인할 수 있다.
 ```
 
 
