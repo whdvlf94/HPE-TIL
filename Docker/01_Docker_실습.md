@@ -55,7 +55,15 @@
 
 
 
-#### Docker 공유 폴더 - Vloume
+### 2. 퍼시스턴스 데이터를 다루는 방법
+
+---
+
+> -v 옵션, --volume-from 옵션 이용하기
+
+
+
+#### Date Volume
 
 ---
 
@@ -146,7 +154,7 @@ CMD ["npm", "start"]
 
 
 
-- **-v 옵션**
+- **-v 옵션 : mount 작업**
 
 ---
 
@@ -177,11 +185,10 @@ CMD ["npm", "start"]
 
 
 
-
-
-### 2. 데이터 볼륨에 MySQL 데이터 저장하기
-
+<h4> Data volume container </h4>
 ---
+
+> 데이터 볼륨에 MySQL 데이터 저장하기
 
 
 
@@ -408,138 +415,3 @@ services:
 # stop , rm 같이 진행된다
 # 위의 명령어는 docker-compose.yml 이 저장되어 있는 디렉토리에서 가능하다.
 ```
-
-
-
-
-
-### 4. Mongodb를 이용한 실습
-
----
-
-
-
-- **mongodb 접속 하기**
-
-```
-1. mongodb 를 docker container로 실행
-2. dockerfile 작성 (mongodb 설치를 위한 이미지 생성)
-3. dockerfile의 image build
-    - whdvlf94/mymongdb:latest
-4. mongodb container 생성 -> 실행
-5. client에서 mongodb 테스트
-    $ mongo -h(ip) -p(port)
-    mongo> show dbs;
-    mongo> use bookstore;
-    mongo> db.books.save('{"title":"Docker compose smapel"}');
-    mongo> db.books.find();
-```
-
-```powershell
-[powershell]
-PS C:\Users\HPE\docker\day02> mkdir mongo
-PS C:\Users\HPE\docker\day02> cd mongo
-PS C:\Users\HPE\docker\day02\mongo> code dockerfile
-
-[dockerfile]
----------
-FROM mongo
-
-CMD ["mongod"]
----------
-
-
-[powershell]
----------
-> docker build -t whdvlf94/mymongodb:latest .
-> docker run -p 27017 whdvlf94/mymongodb:latest
-
-> docker exec -it [container ID] bash
-root@11e3442ae5bd:/# mongo
-
-or
-
-> docker exec -it [containeer ID or Name] mongo
-
-
-#mongodb 접속 완료
-
-
-```
-
-
-
-- **mongod node 생성하기**
-
-```
-4.  rs.initiate()
-5.  rs.add("10.0.0.12:40002")
-    rs.add("10.0.0.13:40003", {arbiterOnly: true}) --> Primary 선정에만 관여, 복제는 하지 않음
-6.  db.isMaster() 
-#현재 node가 master인지 확인하는 명령어
-
-7.  rs.status()
-8.  (NODE01)
-	mongo 10.0.0.11:40001
-        > use bookstore
-        > db.books.insert({title: "Oliver Twist"})
-        > show dbs
-9.  mongo 10.0.0.12:40002
-        > rs.slaveOk()
-        > show dbs
-        > db.books.find()
-10. (Primary) > db.shutdownServer()
-11. (Secondary) -> (Primary) 로 승격
-    - db.books.insert() 사용 가능
-    - 나머지 노드들은 지속적으로 master에게 heartbeat 전달
-12. (기존 Master 다시 기동) -> Secondary로 작동 됨 
-
-** MongoDB 3대 설치 (Primary x 1, Secondary x 2)
-13. Replica Set
-    ex) mongod --replSet myapp --dbpath /폴더지정 --port 27017 --bind_ip_all
-```
-
-
-
-- **dockerfile**
-
-```dockerfile
-FROM mongo
-
-CMD ["mongod","--replSet","myapp"]
-```
-
-
-
-- **powershell**
-
-```powershell
-[server]
-> docker build -t whdvlf94/mymongodb:latest .
-> docker run -p 27017:27017 whdvlf94/mymongodb:latest
-
-[client]
-# 새로운 powershell 열기
-> docker exec -it [container ID] bash
-# mongo
-
-or
-
-> docker exec -it [container ID] mongo
-
-> rs.initiate();
-
-
------------
-# bash에서 ip 주소 확인하기
-- ifconfig
-- ip addr show
-- hostname -i
------------
-
-```
-
-
-
-
-
