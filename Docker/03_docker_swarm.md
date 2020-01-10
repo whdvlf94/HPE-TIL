@@ -20,9 +20,15 @@ networks:
 
 
 - **compose** : 여러 컨테이너로 구성된 도커 애플리케이션을 관리(주로 단일 호스트)
+<<<<<<< HEAD
 - **swarm** : 클러스터 구축 및 관리 (주로 멀티 호스트)
 - **service** : 스웜에서 클러스트 안의 서비스(컨테이너 하나 이상의 집합)을 관리
 -  **stack** : 스웜에서 여러 개의 서비스를 합한 전체 애플리케이션을 관리
+=======
+- **swarm** : 클러스터 구축 및 (주로 멀티 호스트)
+- **service** : 스웜에서 클러스트 안의 서비스(컨테이너 하나 이상의 집합을 관리)
+-  **stack** : 스웜에서 여러 개의 서비슬를 합한 전체 애플리케이션을 관리
+>>>>>>> ae34578e9a979ed21a09f9351a95ba4299ee4770
 
 
 
@@ -146,7 +152,11 @@ services:
 
 
 
+<<<<<<< HEAD
 d
+=======
+
+>>>>>>> ae34578e9a979ed21a09f9351a95ba4299ee4770
 
 - **docker swarm **
 
@@ -172,10 +182,13 @@ d
 
 ---
 
+<<<<<<< HEAD
 > manager(leader)는 swarm 클러스터 전체를 제어한다.
 
 
 
+=======
+>>>>>>> ae34578e9a979ed21a09f9351a95ba4299ee4770
 ```powershell
 > docker exec -it manager docker swarm init
 --------------------------
@@ -206,7 +219,11 @@ docker swarm join ~
 
 ```powershell
 > docker tag busybox:latest localhost:5000/busybox:latest
+<<<<<<< HEAD
 # tag: localhost:5000 로 계정을 바꿔 localhost에서 5000 port로 registry에 접속할 수 있도록 수정한다.
+=======
+# tag: localhost:5000 로 계정을 바꿔 registry에 image를 push 할 수 있도록 수정한다.
+>>>>>>> ae34578e9a979ed21a09f9351a95ba4299ee4770
 
 > docker push localhost:5000/busybox:latest
 # http://localhost:5000/v2/_catalog 접속하여 image 등록 확인
