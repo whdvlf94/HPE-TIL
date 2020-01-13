@@ -62,18 +62,18 @@ or
 
 ```
 4.  rs.initiate()
-5.  rs.add("10.0.0.12:40002")
-    rs.add("10.0.0.13:40003", {arbiterOnly: true}) --> Primary 선정에만 관여, 복제는 하지 않음
+5.  rs.add("10.0.0.xx:40002")
+    rs.add("10.0.0.xx:40003", {arbiterOnly: true}) --> Primary 선정에만 관여, 복제는 하지 않음
 6.  db.isMaster() 
 #현재 node가 master인지 확인하는 명령어
 
 7.  rs.status()
 8.  (NODE01)
-	mongo 10.0.0.11:40001
+	mongo 10.0.0.xx:40001
         > use bookstore
         > db.books.insert({title: "Oliver Twist"})
         > show dbs
-9.  mongo 10.0.0.12:40002
+9.  mongo 10.0.0.xx:40002
         > rs.slaveOk()
         > show dbs
         > db.books.find()
@@ -110,7 +110,7 @@ CMD ["mongod","--replSet","myapp"]
 [client]
 # 새로운 powershell 열기
 > docker exec -it [container ID] bash
-# mongo
+$ mongo
 
 or
 
@@ -146,7 +146,7 @@ or
 [mongo 접속 방법]
 > docker exec -it [container ID] sh
 
-/# mongo [host ip]:[port]
+$ mongo [host ip]:[port]
 
 ```
 

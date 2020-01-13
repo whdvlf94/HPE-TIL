@@ -237,6 +237,41 @@ echo                2                   Swarm
 
 
 
+- **visualizer**
+
+---
+
+
+
+- visualizer.yml
+
+```yaml
+version: "3"
+services:
+    app:
+        image: dockersamples/visualizer       
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        deploy:
+            mode: global
+            placement:
+                constraints:
+                    - node.role == manager
+        ports:
+            - 9000:8000
+             
+```
+
+
+
+- powershell
+
+```powershell
+> docker container exec -it manager docker stacke deploy -c /stack/visualizer.yml visualizer
+
+# http://localhost:9000 접속
+```
+
 
 
 
