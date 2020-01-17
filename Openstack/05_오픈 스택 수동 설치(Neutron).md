@@ -62,7 +62,7 @@
 
 
 ```shell
-controller]# ovs-ovsctl show
+controller]# ovs-vsctl show
 
 network, compute 노드 간의 링크 연결 상태
 ```
@@ -219,7 +219,6 @@ icmp, port 설정
 
 
 <h3> Launch an instance </h3>
-
 [Launch an instance on the self-services network](https://docs.openstack.org/install-guide/launch-instance-selfservice.html)
 
 ```shell
@@ -264,7 +263,6 @@ disconnect는 ^]
 
 
 <h4> CLI 로 instance 관리하기 </h4>
-
 ```shell
 # ip netns exec qrouter-e01a6585-8ece-4e0d-96a6-57e008117d44 ssh cirros@10.0.0.215
 instance 실행
