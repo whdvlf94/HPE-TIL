@@ -118,7 +118,7 @@ root@Docker:/etc/ssh# sudo systemctl restart sshd
 
 ![image-20200120004637069](https://user-images.githubusercontent.com/58682321/72683992-02315080-3b20-11ea-8fc8-f3e504a89001.png)
 
-![image-20200120004640071](C:\Users\skybl\TIL\Linux\72683993-078e9b00-3b20-11ea-841a-e2210668c3ca.png)
+![image-20200120004640071](https://user-images.githubusercontent.com/58682321/72684048-9ac7d080-3b20-11ea-8f52-3ba261d3a3af.png)
 
 
 
