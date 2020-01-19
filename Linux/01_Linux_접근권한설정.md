@@ -18,7 +18,9 @@
 
 **- 디렉토리 : d / 일반적인 파일 : - / 장치 파일 : b(블록 디바이스), c(문자 디바이스), ㅣ(링크)**
 
-![image-20200120000539389](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120000539389.png)
+
+
+![image-20200120000539389](https://user-images.githubusercontent.com/58682321/72683944-9b139c00-3b1f-11ea-9ef1-1f06cf690980.png)
 
 
 
@@ -30,7 +32,7 @@
 
 
 
-![image-20200119225157601](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200119225157601.png)
+![image-20200119225157601](https://user-images.githubusercontent.com/58682321/72683947-9fd85000-3b1f-11ea-84f0-c577cf06786a.png)
 
 
 

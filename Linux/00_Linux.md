@@ -92,7 +92,7 @@
 
 
 
-![image-20200119173010953](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200119173010953.png)
+![image-20200119173010953](https://user-images.githubusercontent.com/58682321/72683939-918a3400-3b1f-11ea-9056-39ef6c70a682.png)
 
 - 53185 pts/2 라는 터미널에 **bash**(shell의 한 종류, 명령어 해석기)라는 shell(독립적인)을 부여 받았다.
 

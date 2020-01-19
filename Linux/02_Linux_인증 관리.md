@@ -16,7 +16,7 @@
 
 
 
-![image-20200120003059263](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120003059263.png)
+![image-20200120003059263](https://user-images.githubusercontent.com/58682321/72683951-aa92e500-3b1f-11ea-8707-9a88caa1c841.png)
 
 \- rsa : 비대칭 key 알고리즘
 
@@ -24,7 +24,7 @@
 
 
 
-![image-20200120003147218](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120003147218.png)
+![image-20200120000539389](https://user-images.githubusercontent.com/58682321/72683953-af579900-3b1f-11ea-9609-81425ec8a288.png)
 
 \- id_rsa (**private) ,** id_rsa.pub(**public)**
 
@@ -98,9 +98,13 @@ root@Docker:/etc/ssh# sudo systemctl restart sshd
 
 **[Aws-ec2-user]** **계정 생성**
 
-![image-20200120004459274](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120004459274.png)
 
-![image-20200120004508359](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120004508359.png)
+
+![image-20200120004459274](https://user-images.githubusercontent.com/58682321/72683963-cc8c6780-3b1f-11ea-8367-d78c4a9e131d.png)
+
+![image-20200120004508359](https://user-images.githubusercontent.com/58682321/72683984-fb0a4280-3b1f-11ea-974a-75761cb8c8b9.png)
+
+
 
 ```shell
 -31-2-150@ip ~]$ sudo -i # root 계정으로 로그인
@@ -110,9 +114,13 @@ root@Docker:/etc/ssh# sudo systemctl restart sshd
 
 **[Aws-student]** **계정 생성**
 
-![image-20200120004637069](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120004637069.png)
 
-![image-20200120004640071](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120004640071.png)
+
+![image-20200120004637069](https://user-images.githubusercontent.com/58682321/72683992-02315080-3b20-11ea-8fc8-f3e504a89001.png)
+
+![image-20200120004640071](C:\Users\skybl\TIL\Linux\72683993-078e9b00-3b20-11ea-841a-e2210668c3ca.png)
+
+
 
 ```shell
 [root@ip ~]# adduser student
@@ -138,7 +146,9 @@ PasswordAuthentication yes
 
 ---
 
-![image-20200120005034699](C:\Users\skybl\AppData\Roaming\Typora\typora-user-images\image-20200120005034699.png)
+![image-20200120005034699](https://user-images.githubusercontent.com/58682321/72683995-0b222200-3b20-11ea-9d49-4b507c29ce4a.png)
+
+
 
 ```shell
 student@Docker:~$ ssh Centos
