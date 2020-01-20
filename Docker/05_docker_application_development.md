@@ -222,7 +222,7 @@ mysql> select * from todo;
 root@ ~ $ mysql -uroot -p tododb
 password : gihyo
 
-mysql> selct * from todo;
+mysql> select * from todo;
 
 # master에서 변경한 내용을 확인할 수 있다.
 

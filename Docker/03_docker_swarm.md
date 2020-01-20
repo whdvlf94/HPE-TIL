@@ -9,7 +9,7 @@ networks:
 ```
 
 ```powershell
-> docker network create --driver bridge
+> docker network create --driver=bridge --attachable mongo-networks
 ```
 
 

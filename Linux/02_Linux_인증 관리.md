@@ -34,18 +34,38 @@
 
 ```shell
 [centos]
+------------------------------------
+[root@centos ~]# ssh-keygen
 
+
+[ubuntu-root]
+------------------------------------
+[root@Docker ~]# adduser student
+# passwd도 student로 설정
+[root@Docker ~]# cat /etc/hosts
+# student 계정 생성 확인
+
+# root 계정에서 ssh student@[ubuntu IP]로 접속
+or
+# Xshell에서 새로운 쉘 생성, 사용자 ID:student, PW:student로 생성하면 활성화 됌
+
+[centos]
+------------------------------------
+[root@centos ~]# cd .ssh/
 [root@centos .ssh]# ssh-copy-id student@[ubuntu IP]
 [root@centos .ssh]# cat id_rsa.pub
 
 [ubuntu-student]
-
+------------------------------------
+[student@Docker ~]$ cd .ssh/
 [student@Docker:~/.ssh]$ cat authorized_keys
 
 # [root@centos .ssh]# cat id_rsa.pub 
 # [student@Docker:~/.ssh]$ cat authorized_keys
 # 두 개의 키 값이 일치하는 지 확인
 
+[centos]
+------------------------------------
 [root@centos ~]# ssh student@[ubuntu IP] 
 # 더 이상 비밀번호를 요구하지 않고, key를 통해 접속 가능
 ```
@@ -88,7 +108,7 @@ root@Docker:/etc/ssh# sudo systemctl restart sshd
 
 
 
-### Passwor 기반 인증
+### Password 기반 인증
 
 ---
 

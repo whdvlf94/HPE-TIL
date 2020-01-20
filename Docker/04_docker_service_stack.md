@@ -203,7 +203,7 @@ networks:
 ---
 
 ```powershell
-[docker-compose.yml]
+[my-webapi.yml]
 
 manager
 	volumes:
