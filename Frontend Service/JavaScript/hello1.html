@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var name = "윤종필";       
+
+            console.log('Hello\"' + name + '\"');
+            console.log(10 % 7); // 나머지 출력
+            console.log(10 / 7); // 몫 출력
+            console.log('가방'>'하마');
+
+            var a=10; // 숫자형 데이터
+            var b='10'; // 문자형 데이터
+            console.log(a, b);
+            console.log(a == b); // data type은 반영하지 않기 때문에 true
+            console.log(a === b); // data type이 다르므로 false
+
+            // alert() : 사용자에게 경고 메세지
+            // confirm() : 2개의 버튼 제공 확인, 취소
+            // prompt() : 사용자에게 값을 입력 받음
+            
+            var userVal = prompt("값을 입력하세요.");
+            console.log("당신이 입력한 값은=" + userVal);
+            // 짝수 or 홀수인지 판단
+
+            if (userVal%2 == 0) {
+                console.log("짝수");
+                
+            } else {
+                console.log("홀수");
+            }
+
+            userVal = "test1";
+            console.log("당신이 입력한 값은" + userVal);
+            var userVal = "test2";
+            console.log("당신이 입력한 값은" + userVal);
+
+    
+
+            //alert("Hello" + name); // () : 함수 or 산술 연산
+            // 문자열 '' or "" 가능
+            // + : 1. 덧셈 , 2. 문자열 결합
+            // overloading : 하나의 기호가 여러 개의 기능을 갖는 것
+
+            console.log("Hello\"윤종필\"");
+            // 중간 결과, 디버깅 용도로 쓰이는 명령어
+            // 개발자 도구> console 창에서 확인
+
+
+            window.onload = function () {
+                // 변수 선언, 문자열로 지정
+                var list = '';
+
+                // 연산자를 사용합니다.
+                list += '<ul>\n';
+                list += '       <li>Hello</li>\n';
+                list += '       <li>JavaScript..!</li>\n';
+                list += '</ul>';
+
+                // 문서 출력
+                let a = 10;
+                let b = '10';
+                console.log(typeof a);
+                console.log(typeof b);
+                console.log(a === b);
+                             
+                                   
+
+
+                document.body.innerHTML = list;
+                  
+            
+            };
+
+        </script>
+
+        
+    </head>  
+    <body>
+        <h1> 제목입니다.</h1>
+        <!-- <h1>제목입니다 </h1>-->
+    
+
+    </body>
+
+
+</html>
+
