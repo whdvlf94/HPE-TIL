@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script> 
+    
+    let a = Number(prompt("국어 점수를 입력하세요."));
+    let b = Number(prompt("수학 점수를 입력하세요."));
+    let c = Number(prompt("영어 점수를 입력하세요."));
+    
+    let sum = a+b+c;    
+    let avg = (a+b+c)/3;
+    console.log("avg =", avg);
+    
+    let grade = ""
+    if (avg >= 90)  grade = "A";
+    else if (avg >= 80)  grade = "B";
+    else if (avg >= 70)  grade = "C";
+    else if (avg >= 60)  grade = "D";
+    else grade = "F";
+    alert("당신의 점수는 " + grade + "입니다.");
+    console.log("sum =" + sum)
+    
+    switch(avg) {
+        case 90:
+            console.log("A");
+            break;
+        case 80:
+            console.log("B");
+            break;
+        case 70:
+            console.log("C");
+            break;
+        case 60:
+            console.log("D");
+            break;
+        default:
+            console.log("F");
+    }
+    </script>
+</head>
+<body>
+
+
+</body>    
+</html>
