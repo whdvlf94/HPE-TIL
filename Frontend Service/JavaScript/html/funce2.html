@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+function power() {
+    if (arguments.length == 1){
+    console.log(arguments[0]*arguments[0]);
+
+    } else if (arguments.length == 2){
+    console.log(arguments[0]**arguments[1]);
+
+    }
+}
+function multiply() {
+    let result = 1;
+    for(i=0; i<arguments.length; i++) {
+    result = result*arguments[i]
+    }
+console.log(result)
+}
+
+power(3);
+power(3,4);
+multiply(1,2,3,4,5);
+
+
+
+</script>
+
+</head>
+</html>
