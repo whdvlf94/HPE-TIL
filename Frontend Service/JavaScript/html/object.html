@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>  
+<head>
+<script>
+
+let person = {
+
+name: '윤종필',
+address: '경기',
+
+// 매서드 : 객체 내에 포함되어 있는 fucntion
+eat: function(food) {
+    console.log(food + '을(를) 먹었습니다.')
+    }
+};
+
+let school = {
+
+name: 'Multi Campus',
+capacity: [30, 30, 30],
+grade: '3',
+event: function(month, eventname) {
+    console.log(this.name + ',' + month + ' 달에 ' + eventname +' 이벤트가 있습니다.')
+    // school 객체 내에 있는 name 이라는 요소를 출력하고 싶을 때는
+    // fucntion에서 함수명을 따로 지정해주지 않고
+    // console.log에서 'this'라는 함수를 이용하여 객체 내에 있는 요소를 사용할 수 있다.
+}
+};
+
+// '윤종필'라는 요소에 person.name 이라는 키로 접근
+console.log(person.name)
+person.eat('바나나');
+school.event('1', '졸업식')
+
+</script>
+</head>
+
+</html>

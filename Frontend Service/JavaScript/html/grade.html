@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    let students = [];
+    students.push({이름:'A', 국어:90, 수학:88, 영어:98});
+    students.push({이름:'B', 국어:80, 수학:78, 영어:88});
+    students.push({이름:'C', 국어:70, 수학:68, 영어:78});
+    students.push({이름:'D', 국어:60, 수학:58, 영어:68});
+    students.push({이름:'E', 국어:50, 수학:48, 영어:58});
+    
+    
+    for (let i in students) {
+        // students[i].sum = students[i].국어 + students[i].수학 + students[i].영어;
+        // students[i].avg = students[i].sum / 3;
+        students[i].sum = function() {
+            return this.국어 + this.수학 + this.영어;
+        }
+
+        students[i].avg = function() {
+            return students[i].sum() / 3;
+        }
+
+    };
+
+    let totalavg = 0;
+    for (let i in students) {
+        with(students[i]) {
+            console.log(이름 + ":" +sum() + "/" + avg());
+            totalavg += avg()
+        }
+    };
+    // 전체 평균 구하기
+    console.log('전체 평균: ' + (totalavg/students.length))
+    
+    </script>
+
+</head>    
+</html>

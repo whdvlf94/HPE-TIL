@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        let jumsu = [100, 80, 75, 55, 79, 95, 68, 100, 94, 59];
+
+        function Student(name, kor, mat, eng) {
+        this.이름 = name; 
+        this.국어 = kor;
+        this.수학 = mat;
+        this.영어 = eng;
+        }
+        this.sum = function() {
+            return this.국어 + this.영어 + this.수학
+        };
+        
+        let students = [];
+        students.push( new Student('A', 100, 90, 80));
+        students.push( new Student('B', 90, 90, 80));
+        students.push( new Student('C', 99, 90, 90));
+        students.push( new Student('D', 70, 90, 80));
+        students.push( new Student('E', 60, 90, 80))
+
+        function myfilter(element, index, array) {
+            return element.sum() >= 250;
+        }
+        
+        let highGroup = students.filter(myfilter);
+        highGroup.forEach(function(element) {
+        console.log(element.이름 + " : " + element.sum());
+        });
+
+    </script>
+</head>
+</html>    

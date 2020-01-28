@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    let student = {};
+
+        student.name = '윤종필'
+        student.kor = 90,
+        student.mat = 80,
+        student.eng = 70
+
+        let sum = 0;
+        let avg = 0;
+
+        // with: student 객체 내에 있는 속성들을 사용하겠다. 객체 이름을 선언하지 않아도 된다. 
+        with(student) {
+            sum = kor+mat+eng;
+            avg = sum/3;
+        }
+
+
+console.log(sum)
+console.log(avg)
+
+    
+
+</script>
+
+</head>
+</html>
