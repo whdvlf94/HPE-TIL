@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+    let weather_json =
+            `{
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04d"
+        }
+    ],
+    "main": {
+        "temp": 9.27,
+        "temp_min": 9,
+        "temp_max": 10,
+        "humidity": 45
+    },
+    "wind": {
+        "speed": 1.5
+    },
+    "dt": 1580272499
+}`;
+
+
+window.onload = function () {
+
+    let _img = document.getElementById("_img");
+    let _temp = document.getElementById("_temp");
+    let _temp_min = document.getElementById("_temp_min");
+    let _temp_max = document.getElementById("_temp_max");
+    let _wind = document.getElementById("_wind");
+    // json 파일의 값을 각 tag 값에 지정
+  
+    let parseJson = JSON.parse(weather_json);
+    // 문자열 데이터를 객체로 변환
+
+    let _image = document.createElement("img")
+    _image.src = "https://openweathermap.org/img/wn/"
+     +  parseJson.weather[0].icon + "@2x.png";
+
+    //  배열 데이터이므로 배열 인덱스 [0] 지정해주어야 한다.
+     _img.appendChild(_image)
+
+    _temp.innerText = "현재온도: " + parseJson.main.temp + " 도"
+    + ', ' + parseJson.weather[0].main;
+    
+    _temp_min.innerText = "최저기온: " + parseJson.main.temp_min ;
+    _temp_max.innerText = "최고기온: " + parseJson.main.temp_max ;
+
+    _wind.innerText = "/ 풍속: " + parseJson.wind.speed;
+
+
+}
+
+    
+
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+
+            <td rowspan="2" id="_img"></td>
+            <td colspan="2" id="_temp">현재온도: 10도, 맑음</td>
+            
+        </tr>
+        <tr>
+            
+           <td>
+            <spin id=_temp_min style="color: blue;">10 /</spin>
+            <spin id=_temp_max style="color: red;"> 20</spin>
+            <td id="_wind">풍속</td>
+            </td>
+        </tr>
+        
+
+
+    </table>
+
+
+</body>
+</html>

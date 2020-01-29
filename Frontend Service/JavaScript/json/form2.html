@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+    function saveTemporary() {
+        //   선택된 sns 값 취득
+        let selectedSns = document.getElementsByName("sns");
+        let selectCount = 0;
+        for (let i = 0; i < selectedSns.length; i++) {
+            if (selectedSns[i].checked) {
+                selectCount++;
+                console.log(selectedSns[i].value);
+            }
+        }
+        if (selectCount == 0) {
+            alert("SNS는 필수사항 입니다.");
+        }
+    }
+
+
+    let inputs = document.getElementsByName("input");
+    for (let i = 0; i < inputs.length; i++) {
+        console.log(inputs[i])
+    }
+    window.onload = function () {
+        let btnNext = document.getElementById("btnNext");
+        btnNext.onclick = function () {
+            let name = document.getElementById("txtName");
+            let id = document.getElementById("txtId");
+            let pwd = document.getElementById("txtPwd");
+
+            if (name.value == "") {
+                alert("이름은 필수사항 입니다.")
+                return;
+            }
+            if (id.value == "") {
+                alert("아이디는 필수사항 입니다.")
+                return;
+            }
+            if (pwd.value == "") {
+                alert("비밀번호는 필수사항 입니다.")
+                return;
+            }
+            // 다음 단계 or form.action 페이지로 이동
+            let form = document.getElementById("registform");
+            form.action = "next.html"
+            form.submit();
+
+        }
+    }
+
+
+
+
+</script>
+</head>
+
+<body>
+
+    <form action="table.html" method="POST" id="registform">
+        <div>*는 필수 입력사항입니다.</div>
+        * 이름: <input type="text" name='name' id='txtName' placeholder="이름을 입력하세요"><br />
+        * 아이디: <input type="text" name='id' id="txtId" placeholder="아이디를 입력하세요"><br />
+        * 비밀번호: <input type="password" name='password' id="txtPwd" placeholder="비밀번호를 입력하세요"><br />
+
+        사용하는 SNS:
+        <input type="checkbox" name="sns" value="Facebook"> Facebook
+        <input type="checkbox" name="sns" value="Twitter"> Twitter
+        <input type="checkbox" name="sns" value="Instagram"> Instagram
+        <input type="checkbox" name="sns" value="Google+"> Google+ <br />
+
+        자기 소개:
+        <textarea cols="40" rows="5" name='profile'>
+
+             </textarea><br />
+        <input type="submit" value="회원 가입">
+        <input type="button" value="다음단계" id="btnNext">
+        <input type="button" value="임시 저장" onclick="saveTemporary()">
+
+
+    </form>
+</body>
+
+</html>

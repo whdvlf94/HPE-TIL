@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        window.onload = function() {
+        // img 태그 추가
+        
+        let myImg = document.createElement("img");
+        myImg.src = "googlelogo.png"
+        myImg.width = 100;
+        myImg.height = 100;
+        
+        document.body.appendChild(myImg);
+        // document.body.innerHTML = "<h1 style='color: blue;'>Hello, jp. Hi, there</h1>"
+        // innerHTML 속성 기존에 적용했던 속성 값들이 다 사라지고 해당 내용만 웹 페이지 상에 나타난다.
+        
+        let div1 = document.getElementById("myDiv1");
+        div1.innerHTML = "<h1 style='color: blue;'>Hello, jp. Hi, there</h1>"
+        // div 태그를 이용하면 innerHTML 속성하더라도 기존에 body에 있었던 내용이 사라지지 않는다.
+        document.body.removeChild(document.getElementById('myH1'));
+    }
+
+
+    </script>
+</head>
+
+<body>
+    <h1 id="myH1">Hello, DOM</h1>
+    <div id="myDiv1">
+        here
+    </div>
+
+</body>
+</html>

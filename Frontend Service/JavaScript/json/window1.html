@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    
+    console.log(navigator.appCodeName);
+    console.log(navigator.appName);
+    console.log(navigator.appVersion);
+    console.log(navigator.platform);
+    console.log(navigator.userAgent);
+    
+    function myOpen(url) {
+        window.open(url, '_blank', 'width=600, height=400, status=yes');
+    }
+    function myLocation(url){
+        location.href="https://www.multicampus.com";
+    }
+  </script>
+</head>
+<body>
+<ul>
+    <li><a onclick="myOpen('https://www.naver.com')">Naver</a></li> <!-- a tag 이용 링크를 추가-->
+    <li><a onclick="myOpen('https://www.daum.net')">Daum</a></li>
+    <li><button onclick="myLocation()">Multicampus</a></li>
+</ul>
+</body>
+</html>

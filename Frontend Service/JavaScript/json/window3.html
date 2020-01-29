@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            window.onload = function() {
+
+                let ul_tag = document.createElement("ul");
+                let li_tag1 = document.createElement("li");
+                let li_tag2 = document.createElement("li");
+                let _naver = document.createTextNode("Naver");
+                let _daum = document.createTextNode("Daum");
+
+                li_tag1.appendChild(_naver);
+                li_tag2.appendChild(_daum);
+                ul_tag.appendChild(li_tag1);
+                ul_tag.appendChild(li_tag2);
+
+                document.body.appendChild(ul_tag);
+            
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Hello, DOM</h1>
+    </body>
+</html>
