@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://api.openweathermap.org/data/2.5/forecast",
+                method: "GET",
+                data: {
+                    q: "seoul",
+                    APPID: "e96e8ea03713a611f7562052ab426863",
+                    units: "metric"
+                },
+                success: function (data) {
+                    $.each(data.list, function (index, item) {
+                        let _image = document.createElement("img");
+                        _image.src = "http://openweathermap.org/img/wn/"
+                            + item.weather[0].icon + "@2x.png";
+
+                        let _divhtml = item.dt_txt;
+                        _divhtml += ", 기온:" + item.main.temp;
+                        _divhtml += " <span style='color:blue;'>" + item.main.temp_min + "</span>";
+                        _divhtml += "/<span style='color:red;'>" + item.main.temp_max + "</span>";
+                        _divhtml += ", " + item.weather[0].description;
+
+                        let imageSpan = document.createElement("span");
+                        imageSpan.appendChild(_image);
+                        let infoSpan = document.createElement("span");
+                        infoSpan.innerHTML = _divhtml;
+
+                        let div = document.createElement("div");
+                        div.appendChild(imageSpan);
+                        div.appendChild(infoSpan);
+
+                        $('#contents').append(div);
+                    });
+                },
+                error: function (err) {
+                    console.log("err" + err);
+                }
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="contents"></div>
+
+</body>
+
+</html>

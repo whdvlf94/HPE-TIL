@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('div li').css('color', 'red');
+            $('div > h1').css('color', 'blue');
+            // div 한 단계 아래(자손)에 있는 h1 태그만 변경된다.
+
+            // $('div h1').css('color', 'blue');
+            // div 아래에 있는 모든(후손)에 있는 h1 태그 변경
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>Header-0</h1>
+        <ul>
+            <li>Apple</li>
+            <li>Bag</li>
+            <li>Cat</li>
+            <li>Dog</li>
+            <li>Elephant</li>
+        </ul>
+        <span>
+            <h1>Hearder-1</h1>
+        </span>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let array =[
+            {name:"Naver", link:'https://www.naver.com'},
+            {name:"Google", link:'https://www.google.com'},
+            {name:"Daum", link:'https://www.daum.net'},
+            {name:"Multicampus", link:'https://www.multicampus.com'},
+            
+            ];
+
+            // for(let i=0; i<array.length; i++) {
+            //     console.log(array[i].name)
+            // }
+
+            // each 문장
+            // $('array').each(function(){})
+
+            let output = "";
+            $.each(array,function(index, item) {
+                output += "<li>" + item.name + "(" + item.link + ")" + "</li>"
+
+                // item : name, link 가 포함되어 있다.
+                // console.log(item.name + '/' + item.link);
+                // object와 문자열이 결합되면 문자열로 출력된다.
+            });
+            console.log(output)
+            /*
+            [java script] - 
+
+            1)
+            let div1 = document.getElementById("myDiv1");
+            div1.innerHTML = output;
+
+            2)
+            document.getElementById('contents').innerHTML = output;
+            */
+           
+            $('#myDiv1').append(output)
+            // jQuery는 더 간단하게 innerHTML을 사용할 수 있다.
+            // innerHTML : 웹 페이지 상에 출력
+
+        });
+    </script>
+</head>
+<body>
+    <div id="myDiv1">
+
+    </div>
+</body>
+</html>

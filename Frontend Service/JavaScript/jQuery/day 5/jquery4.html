@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input[type="text"]').val('test value');
+            // type=text 인 속성에만 test value라는 text input
+            // $('#name').val() // getter 값을 얻어옴
+            // $('#name').val(test) // setter 값을 지정
+
+            // button(onclick 이벤트)를 실행하면 로그 전송
+            $('#btn1').on('click', function() {
+                console.log($('#input1').val())
+                console.log($('#input2').val())
+                console.log($('#input3').val())
+                console.log($('#input4').val())
+                console.log($('#input5').val())
+                console.log($('#input6').val())
+            });
+
+            setTimeout(function() {
+                // let selectedItem = $('#mySelect')
+                let selectedItem = $('select > option:selected').val();
+                // 선택된 라디오 버튼의 값과 체크 박스의 값 출력
+                
+    
+                
+                console.log($('input[name="gender"]:checked').val());
+
+            }, 5000)
+            // 5초 뒤, 실행
+
+        });
+    </script>
+</head>
+
+<body>
+    입력필드(일반1):          <input id="input1" type="text"> <br/>
+    입력필드(일반2):          <input id="input5" type="text"> <br/>
+    입력필드(비밀번호):      <input id="input2" type="password"> <br/>
+    라디오(남성):           <input id="input7" name="gender" type="radio" value="M"> <br/>
+    라디오(여성):           <input id="input8" name="gender" type="radio" value="F"> <br/>
+
+    라디오:                 <input id="input3" type="radio"> <br/>
+    체크박스:               <input id="input4" type="checkbox"> <br/>
+    <!-- 파일:                   <input id="input5" type="file"> <br/> -->
+    히든(숨김):             <input id="input6" type="hidden"> <br/>
+
+    <select id="mySelect">
+        <option value="apple">사과</option>
+        <option value="banana">바나나</option>
+        <option value="orange">오렌지</option>
+        <option value="키위">kiwii</option>
+    </select>
+
+    <button type="button" id="btn1"> 전송 </button>
+
+</body>
+
+</html>
