@@ -4,49 +4,75 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/forecast",
-                method: "GET",
-                data: {
-                    q: "seoul",
-                    APPID: "e96e8ea03713a611f7562052ab426863",
-                    units: "metric"
-                },
-                success: function (data) {
-                    $.each(data.list, function (index, item) {
-                        let _image = document.createElement("img");
-                        _image.src = "http://openweathermap.org/img/wn/"
-                            + item.weather[0].icon + "@2x.png";
+            $(document).ready(function () {
+                $('#btnSubmit').on('click', function () {
+                    
+                    // let city = $('#city').val();
+                    let city = $('#city > option:selected').val();
 
-                        let _divhtml = item.dt_txt;
-                        _divhtml += ", 기온:" + item.main.temp;
-                        _divhtml += " <span style='color:blue;'>" + item.main.temp_min + "</span>";
-                        _divhtml += "/<span style='color:red;'>" + item.main.temp_max + "</span>";
-                        _divhtml += ", " + item.weather[0].description;
+                        
+                    // if (city != null && city != '') {
 
-                        let imageSpan = document.createElement("span");
-                        imageSpan.appendChild(_image);
-                        let infoSpan = document.createElement("span");
-                        infoSpan.innerHTML = _divhtml;
 
-                        let div = document.createElement("div");
-                        div.appendChild(imageSpan);
-                        div.appendChild(infoSpan);
+                        $.ajax({
+                            url: "http://api.openweathermap.org/data/2.5/forecast",
+                            type: "GET",
+                            data: {
+                                q: city,
+                                APPID: "e96e8ea03713a611f7562052ab426863",
+                                units: "metric"
+                            },
+                            success: function (data) {
 
-                        $('#contents').append(div);
-                    });
-                },
-                error: function (err) {
-                    console.log("err" + err);
-                }
-            })
+                                $('#contents').empty();
 
-        });
+                                $.each(data.list, function (index, item) {
+                                    let _image = document.createElement("img");
+                                    _image.src = "http://openweathermap.org/img/wn/"
+                                        + item.weather[0].icon + "@2x.png";
+
+                                    let _divhtml = item.dt_txt;
+                                    _divhtml += ", 기온:" + item.main.temp;
+                                    _divhtml += " <span style='color:blue;'>" + item.main.temp_min + "</span>";
+                                    _divhtml += "/<span style='color:red;'>" + item.main.temp_max + "</span>";
+                                    _divhtml += ", " + item.weather[0].description;
+
+                                    let imageSpan = document.createElement("span");
+                                    imageSpan.appendChild(_image);
+                                    let infoSpan = document.createElement("span");
+                                    infoSpan.innerHTML = _divhtml;
+
+                                    let div = document.createElement("div");
+                                    div.appendChild(imageSpan);
+                                    div.appendChild(infoSpan);
+
+                                    $('#contents').append(div);
+                                });
+                            },
+                            error: function (err) {
+                                console.log("ERROR");
+                            }
+                        })
+
+                    // }
+                })
+            });
     </script>
 </head>
 
 <body>
+    <select id="city">
+
+        <option value="seoul">서울</option>
+        <option value="tokyo">도쿄</option>
+        <option value="london">런던</option>
+    </select>
+    
+        <!-- <input type="text" name="city" id="city" placeholder="도시를 입력하세요"> -->
+        <button id="btnSubmit">검색</button>
+        <!-- 아래와 같은 방법으로도 button 사용 가능, 그러나 요즘에는 위의 방법을 선호한다. type을 따로 지정해주지 않아도 되기 때문 -->
+        <!-- <input type="button" id="btnSubmit" value="검색"> -->
+ 
     <div id="contents"></div>
 
 </body>

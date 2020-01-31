@@ -357,6 +357,7 @@
 
 
 ### 2. ajax 이용
+> 비동기 방식
 ---
 ```html
 <!DOCTYPE html>

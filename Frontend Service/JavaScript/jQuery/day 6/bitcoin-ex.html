@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../mydate.js"></script>
+
+    <script>
+            $(document).ready(function () {
+
+
+                $.ajax({
+                    url: "https://poloniex.com/public",
+                    type: "GET",
+                    data: {
+                        command: "returnChartData",
+                        currencyPair: "USDT_BTC",
+                        start: "1577836800",
+                        end: "9999999999",
+                        period: "86400"
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        console.log("success")
+
+                        $.each(data, function (index, item){
+                                    let date = convertDate(item.date);
+                                    let _divhtml =  "Date: "+ date ;
+                                    _divhtml += "<span style='color:red;'> high: " + item.high + "</span>";
+                                    _divhtml += " <span style='color:blue;'> low: " + item.low + "</span>";
+                                    _divhtml += ", Volume: " + item.volume ;
+
+                                    let infoSpan = document.createElement("span");
+                                    infoSpan.innerHTML = _divhtml;
+
+                                    let div = document.createElement("div");
+                                    div.appendChild(infoSpan);
+
+                                    $('#contents').append(div);
+                        })
+                    },
+                    error: function (err) {
+                        alert("ERROR")
+                    }
+                })
+            });
+    </script>
+</head>
+
+<body>
+    <div id="contents"></div>
+
+</body>
+
+</html>
