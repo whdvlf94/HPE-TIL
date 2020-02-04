@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
+        count: 10,
         info: {
             name: 'React',
             age: '10',
@@ -12,9 +12,10 @@ class Counter extends Component {
     }
 
     constructor(props) {
-            super(props);
-            // this.state.count = this.props.init;
-            console.log('call constrouctor')
+            super(props) 
+
+                this.state.count = this.props.init;
+                console.log('call constrouctor')
         }
         
 

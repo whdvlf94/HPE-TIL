@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import Counter from './Counter';
-import Error1 from './Error1';
+// import Error1 from './Error1';
 
 class App extends Component {
   render() {
-    const count =200
+    const count =0
   
 
     return (
    
-        // <Counter init={count}/> 
-      <Error1 init={count}/>
+        <Counter init={count}/> 
+      // <Error1 init={count}/>
       
       )
     }
