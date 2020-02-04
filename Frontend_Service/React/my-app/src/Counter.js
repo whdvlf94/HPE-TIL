@@ -15,6 +15,8 @@ class Counter extends Component {
             super(props) 
 
                 this.state.count = this.props.init;
+                // 상탯값을 직접 할당하는 것은 constructor 메서드에서만 허용
+                // 원래는 this.setState 활용
                 console.log('call constrouctor')
         }
         

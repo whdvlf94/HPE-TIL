@@ -39,7 +39,7 @@
 
 ※ **DOM(Document Object Model)** : 웹 페이지에 대한 인터페이스. 여러 프로그램들이 페이지의 컨텐츠 및 구조, 그리고 스타일을 읽고 조작할 수 있도록 API 제공
 
-[DOM 개념 참조](https://wit.nts-corp.com/2019/02/14/5522)
+[DOM 개념 참조](https://w it.nts-corp.com/2019/02/14/5522)
 
 
 
