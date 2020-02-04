@@ -472,8 +472,6 @@ export default MyIntro;
 <h4>- function 이용</h4>
 ---
 
-
-
 - MyIntro2.js
 ```js
 import React from 'react';
