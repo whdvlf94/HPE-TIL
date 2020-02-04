@@ -411,10 +411,9 @@ export default App;
 
 
 
-<h4> - Class 이용하기(권장)</h4>
+#### 1) Class 이용하기(권장)
+
 ---
-
-
 
 - App.js
 ```js
@@ -469,7 +468,8 @@ export default MyIntro;
 
 
 
-<h4>- function 이용</h4>
+#### 2) function 이용
+
 ---
 
 - MyIntro2.js
