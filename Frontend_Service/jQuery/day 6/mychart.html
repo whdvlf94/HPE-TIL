@@ -32,6 +32,7 @@
     let dateArray = [];
     let highArray = [];
     let lowArray = [];
+    // 최상위 단계에서 변수를 선언했기 때문에, ajax 내부(블럭 내부)에서 사용 가능하다.
     $.ajax({
       url: "https://poloniex.com/public",
       type: "GET",
