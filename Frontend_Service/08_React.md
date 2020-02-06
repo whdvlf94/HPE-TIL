@@ -22,7 +22,7 @@
 ---
 
 - **App.js**
-```js
+```react
 import React, { Component } from 'react';
 import PhoneForm from './components/Phone_form';
 

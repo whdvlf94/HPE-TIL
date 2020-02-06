@@ -79,7 +79,7 @@ import SearchBar from './Components/search_bar';
 import VideoList from './Components/video_list';
 import VideoDetail from './Components/video_detail';
 
-const API_KEY = 'AIzaSyAGBGeWwYqkg9d21m9cmwFubxoOjTVDNGI';
+const API_KEY = '인증키';
 
 class App extends Component {
   constructor(props) {
