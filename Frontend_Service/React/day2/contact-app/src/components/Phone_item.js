@@ -28,7 +28,6 @@ class PhoneItem extends Component {
     }
 
     handleEdit = (e) => {
-
         const { editable } = this.state;
         this.setState({
             editable: !editable
