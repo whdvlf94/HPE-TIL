@@ -1,6 +1,5 @@
 import React from 'react';
 import VideoListItem from './video_list_item';
-import { ProgressPlugin } from 'webpack';
 
 const VideoList = (props) => {
     // {video} : 부모 component에서 설정한 이름을 비구조 할당({})으로 가져오면 props를 쓰지 않고 사용할 수 있다. 

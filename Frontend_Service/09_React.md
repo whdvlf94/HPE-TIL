@@ -71,7 +71,7 @@ cmd 창에서 npm install --save youtube-api-search 실행(YouTube 폴더 위치
 
 ---
 
-```javascript
+```react
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -108,6 +108,7 @@ class App extends Component {
 
 
   render() {
+
     return (
       <div>
         <SearchBar />
@@ -127,6 +128,10 @@ class App extends Component {
   }
 }
 ReactDom.render(<App />, document.querySelector('.container'));
+// document.getElementById = document.querySelector 같은 의미
+// App.js를 index.html 파일 body 내에 있는 div에 넣어준다.
+// 따라서 export default 명령어를 삽입하지 않아도 된다.
+
 // document.[조건]('#id')
 // document.[조건]('.className')
 
@@ -146,7 +151,7 @@ ReactDom.render(<App />, document.querySelector('.container'));
 
 - **search_bar.js(SearchBar)**
 
-```js
+```react
 import React, { Component } from 'react';
 
 class SearchBar extends Component {
@@ -194,7 +199,7 @@ export default SearchBar;
 
 - **video_list.js(VideoList)**
 
-```js
+```react
 import React from 'react';
 import VideoListItem from './video_list_item';
 import { ProgressPlugin } from 'webpack';
@@ -232,7 +237,7 @@ export default VideoList;
 
 - **video_list_item.js(VideoListItem)**
 
-```js
+```react
 import React from 'react';
 
 const VideoListItem = ({ video, onVideoSelect }) => {
@@ -267,7 +272,7 @@ export default VideoListItem;
 
 - **style.css**
 
-```css
+```react
 .search-bar {
     margin: 1px;
     text-align: center;

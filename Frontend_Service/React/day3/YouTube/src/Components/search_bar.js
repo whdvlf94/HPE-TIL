@@ -5,35 +5,33 @@ class SearchBar extends Component {
         super(props);
 
         this.state = {
-            term:''
+            term: ''
         }
-        }
+    }
 
     onInputChange = (event) => {
-        this.setState ({
+        this.setState({
             term: event.target.value
-        })
-        // console.log(event.target.value)
+        });
         // [변수명].target.value : 입력한 값이 개발자 도구에 표시되도록 하는 명령어
-        }   
+
+        this.props.onSearchTermChange(event.target.value);
+    }
+
 
     render() {
         return (
-     
-                <div className="search-bar">
-                <input className="input" placeholder='검색' onChange={this.onInputChange} />
-                {/* <div>Value of the input:{this.state.term}</div> */}
-                <input className="button" type="submit" value="Search"/>
-                </div>
-   
 
+            <div className='search-bar'>
+                <input className="input" placeholder='검색' onChange={this.onInputChange} />
+                <button className="button" type="submit">Search</button>
+            </div>
 
             //  <input onChange={event => console.log(event.target.value)} />
         )
 
     }
 }
-        
-        
-export default SearchBar;   
-    
+
+
+export default SearchBar;

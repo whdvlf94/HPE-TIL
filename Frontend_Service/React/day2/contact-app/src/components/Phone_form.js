@@ -36,11 +36,12 @@ class PhoneForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <input 
                 placeholder='이름을 입력하세요'
+                value={this.state.name}
                 onChange={this.handleChange}
                 name='name'/>
-            
                 <input 
                 placeholder='연락처를 입력하세요'
+                value={this.state.phone}
                 onChange={this.handleChange}
                 name='phone'/>
                 <button type='submit'>등록</button>

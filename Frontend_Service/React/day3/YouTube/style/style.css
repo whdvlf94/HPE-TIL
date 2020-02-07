@@ -1,14 +1,15 @@
 .search-bar {
     margin: 1px;
+    padding: 20px;
     text-align: center;
 }
 .search-bar .input {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     width: 75%    
 }
-.search-bar .button {
-    margin-bottom: 15px;
-    width: 9%;
+.search-bar .button:hover {
+    /* margin-bottom: 15px; */
+    /* width: 9%; */
     text-align: center;   
 }
 .video-item img {
@@ -19,7 +20,6 @@
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    text-align: center;
     
 }
 .list-group-item {
@@ -28,5 +28,7 @@
 .list-group-item:hover {
     background-color: #eee;
 }
+
+
 
 

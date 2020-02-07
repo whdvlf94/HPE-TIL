@@ -129,7 +129,7 @@ npm start
 
 - **src > App.js : UI 수정**
 
-```javascript
+```react
 import React from 'react';
 # 리액트 conponent, 외부 Component, CSS, images 등 불러오기
 
@@ -162,7 +162,7 @@ export default App;
 
 - **class , function 표현 방법**
 
-```js
+```react
 import React, {Component} from 'react';
 // class 가 있는 경우에만 {Component} 작성
 // 없는 경우에는 import React from 'react'; 로 작성하면 된다.
@@ -199,7 +199,7 @@ export default App;
 
 
 **- Fragment 사용하기**
-```js
+```react
 
 import React, {Component} from 'react';
 import {Fragment} from 'react';
@@ -228,7 +228,7 @@ export default App;
 
 **- Const name**
 
-```js
+```react
 import React, {Component} from 'react';
 import './App.css'
 
@@ -256,7 +256,7 @@ export default App;
 
 **- const time**
 
-```js
+```react
 import React, {Component} from 'react';
 import './App.css'
 
@@ -306,7 +306,7 @@ class App extends Component {
 
 **- style 작성 규칙**
 
-```js
+```react
 import React, {Component} from 'react';
 import './App.css'
 
@@ -364,7 +364,7 @@ class App extends Component {
 
 
 - MyIntro.js
-```javascript
+```react
 import React, {Component} from 'react';
 
 class MyIntro extends Component {
@@ -387,7 +387,7 @@ export default MyIntro;
 
 
 - App.js
-```js
+```react
 import React, {Component} from 'react';
 import './App.css'
 import MyIntro from './MyIntro';
@@ -416,7 +416,7 @@ export default App;
 ---
 
 - App.js
-```js
+```react
 import React, {Component} from 'react';
 import './App.css'
 import MyIntro from './MyIntro';
@@ -441,7 +441,7 @@ export default App;
 ```
 
 - MyIntro.js
-```js
+```react
 import React, { Component } from 'react';
 
 class MyIntro extends Component {
@@ -473,7 +473,7 @@ export default MyIntro;
 ---
 
 - MyIntro2.js
-```js
+```react
 import React from 'react';
 
 const MyIntro2 = function ({card}) {
@@ -494,7 +494,7 @@ export default MyIntro2;
 ```
 
 - App.js
-```js
+```react
 import React, {Component} from 'react';
 import MyIntro2 from './MyIntro2';
 
@@ -522,7 +522,7 @@ export default App;
 ## state 사용 - 자식 컴포넌트
 
 - Counter.js
-```js
+```react
 import React, { Component } from 'react';
 
 class Counter extends Component {
@@ -561,7 +561,7 @@ export default Counter;
 ```
 
 - App.js
-```js
+```react
 import React, {Component} from 'react';
 import Counter from './Counter';
 
@@ -590,7 +590,7 @@ export default App;
 ---
 
 - Counter.js
-```js
+```react
 import React, { Component } from 'react';
 
 class Counter extends Component {
@@ -651,7 +651,7 @@ export default Counter;
 
 **- construcotr 메서드 (Counter.js)**
 
-```js
+```react
 import React, { Component } from 'react';
 
 class Counter extends Component {
@@ -736,7 +736,7 @@ export default Counter;
 
 - **Error 발생 시키기(Error.js)**
 
-```js
+```react
 import React, { Component } from 'react';
 
 const ErrorObject = () => {
