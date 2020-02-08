@@ -57,7 +57,7 @@
 
 \- **가상 돔(virtual dom)**을 통해서 UI를 빠르게 업데이트 한다.
 
-​	※ **가상 돔(virtual dom)** : 이전 U 상태를 메모리에 유지해서, 변경될 UI의 최소 집합을 계산하는 기술. 이 덕분에 불필요한 UI 업데이트는 줄고, 성능은 좋아진다.
+​	※ **가상 돔(virtual dom)** : 이전 UI 상태를 메모리에 유지해서, 변경될 UI의 최소 집합을 계산하는 기술. 이 덕분에 불필요한 UI 업데이트는 줄고, 성능은 좋아진다.
 
 
 
@@ -141,6 +141,7 @@ function App() {
        Hello, React
       </header>
     </div>
+      
   );
 }
 # 컴포넌트 생성 -> Class or Function, 내부에서 JSX를 반환
@@ -198,11 +199,15 @@ export default App;
 
 
 
+
+
 **- Fragment 사용하기**
 ```react
 
 import React, {Component} from 'react';
-import {Fragment} from 'react';
+import {Fragment} from 'react';\
+// import React, {Component, Fragment} from 'react';
+
 class App extends Component {
   render() {
     // class를 만들 경우에만 render() 호출, function 에는 사용 x
@@ -224,7 +229,7 @@ class App extends Component {
 export default App;
 ```
 
-
+※ **Fragement를 사용하면, Element에 root element가 나오지 않는다. 즉, 불필요한 태그 제**
 
 **- Const name**
 

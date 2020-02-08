@@ -37,9 +37,7 @@ Q) 배열에서 3만 제거하는 방법
 Array.slice(0,2).concat(Array.slice(3,5));
 
 2) 전개 연산자
-var array1 = Array.slice(0,2)
-var array2 = Array.slice(3,5)
-var array3 = [...array1, ...array2];
+[...Array(0,2), ...Array(3,5)];
 
 3) filter
 Array.filter(n => n !==3);
