@@ -110,7 +110,7 @@ console.log(a, b);
 console.log(a == b); // data type은 반영하지 않기 때문에 true
 console.log(a === b); // data type이 다르므로 false
 
-// alert() : 사용자에게 경고 메세지
+// alert() : 사용자에게 알림 창 메세지
 // confirm() : 2개의 버튼 제공 확인, 취소
 // prompt() : 사용자에게 값을 입력 받음
 
@@ -576,7 +576,7 @@ window.onload = function () {
     <script>
         let array = [232, 32, 103, 55, 42];
         console.log(array); 
-        console.log(typeof array);    //object
+        console.log(typeof array);    //array
         console.log(array.length);    // 4
         console.log(array[1]);        // 32
         array[1] = 100;
