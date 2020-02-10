@@ -31,6 +31,8 @@
   $(document).ready(function () {
     $('#btnSubmit').on('click', function () {
 
+      
+
       $('#contents').empty();
 
       let start = $('#start').val();
@@ -119,8 +121,8 @@
     <canvas id="myChart"></canvas>
     </div>
 
-    <input id='start' placeholder="시작일"></input>
-    <input id='end' placeholder="종료일"></input>
+    <input id='start' placeholder="시작일: yyyy-mm-dd"></input>
+    <input id='end' placeholder="종료일: yyyy-mm-dd"></input>
     <button id="btnSubmit">검색</button>
     <div id="contents"></div>
   </body>

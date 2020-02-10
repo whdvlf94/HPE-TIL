@@ -1,0 +1,41 @@
+
+.search-bar {
+    margin: 1px;
+    padding: 20px;
+    text-align: center;
+}
+.search-bar .input {
+    width: 75%; 
+    padding: 10px;   
+}
+.search-bar .button {
+    background-color: darkgrey;
+    text-align: center;
+    margin-left: 5px;
+    padding: 8px;
+    color: white;
+    font-size: 1rem;
+}
+
+.App-header .title {
+    text-align: center;
+
+}
+
+.Header {
+    background-color: #5c7cfa;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.item {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* display: table-cell; */
+    color: white;
+    text-decoration: none;
+    font-size: 5rem;
+
+}

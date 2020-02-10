@@ -6,5 +6,5 @@ function convertDate(timestamp) {
   // let h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
   // let mi= date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
 
-  return m+"-"+d;
+  return y+"-"+m+"-"+d;
 }
