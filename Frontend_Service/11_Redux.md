@@ -4,9 +4,11 @@
 
 
 
-![](https://i.imgur.com/nnYKPBo.png)
+## 1. Flux & Redux?
 
-​															※ 출처 : https://velopert.com/3528
+> Redux를 사용하면 상태 값을 Component에 종속시키지 않고, 상태 관리는 Component 바깥에서 관리 할 수 있다.
+
+
 
 
 
@@ -18,6 +20,10 @@
 
 > [Flux 이해하기](http://bestalign.github.io/2015/10/06/cartoon-guide-to-flux/) 
 
+
+
+**=> 문제점**
+
 - MVC(Model, View, Controller)
 
 - Mode에서 Rendering을 위해 View로 데이터 전달
@@ -26,19 +32,80 @@
 
   \- 의존성 문제로 인해 다른 Model 데이터 업데이트
 
-  
+
+
+**※ 위와 같은 상황에서 변경들이 비동기적으로(asynchronously)  생길 수도 있고, 하나의 변경이 다수의 변경들을 일으킬 수 있다.**
+
+
 
 **=> 해결책**
 
-	- Unidirectional Data Flow
-	- 데이터는 단방향으로 전달
-	- 새로운 데이터가 발생되면, 처음부터 흐름이 다시 시작 -> Flux
+- **Unidirectional Data Flow**
+- 데이터는 **단방향**으로 전달
+- 새로운 데이터가 발생되면, 처음부터 흐름이 다시 시작 -> Flux
+- 
+
+![](http://bestalign.github.io/2015/10/06/cartoon-guide-to-flux/05.png)
+
+​						(※ 출처 : http://bestalign.github.io/2015/10/06/cartoon-guide-to-flux/)
+
+
+
+#### Flux 이해하기
+
+---
+
+
+
+- **action creator**
+
+  - 어떤 메세지를 보낼지 알려주면 나머지 시스템이 이해할 수 있는 포맷으로 바꿔준다.
+
+  - `type` 과 `payload`를 포함한 액션 생성
+
+  - `type` : 시스템에 정의 된 액션 들 중 하나 (ex. MESSAGE_CREATE)
+  
+    
+
+**=> 액션 메세지를 생성한 후, `dispatcher`로 넘겨줌**
+
+​    
+
+- **dispatcher**
+
+  - `callback` 이 등록되어 있는 곳
+
+  - 액션을 보낼 필요가 있는 모든 store를 보유
+
+  - 액션 생성자로부터 액션이 넘어오면 모든 스토어에 액션을 보냄
+
+    - 동기적으로(synchronously) 실행, store들 사이에 의존성이 있다면 `waitFor()`을 사용하여 처리
+  
+  
+
+**=> 액션 `type`과 관계없이 등록된 여러 `store`로 액션을 보냄, `store`는 특정 액션을 `subscribe`하지 않고 모든 액션을 받는다.**
+
+
+
+- **store**
+  - App 내의 모든 상태와 그와 관련된 `logic`을 가지고 있다.
+  - 모든 상태 변경은 `store`에 의해 결정
+  - 상태 변경 요청을 위해서는 반드시 `dispatch(action)`을 거쳐야 한다.
+  - `store` 내부에는 `switch statement`를 사용해서 처리할 액션과 무시할 액션 결정
+  - 상태 변경 완료 후, 변경 이벤트를 `컨트롤러 뷰(controller View)`에 전달 
+
+
+
+- **controller view & view**
+  - `view` : 상태를 가져오고 유저에게 UI 제공, 입력받을 화면을 렌더링 하는 역할
+  - `controller view` : `store` 와 `view` 사이의 중간 관리자 역할 
+    - `store` →`controller view` → `store`
 
 
 
 
 
-#### Redux
+#### Redux 이해하기
 
 ---
 
@@ -46,7 +113,29 @@
 
 
 
+**Flux to Redux, why?**
 
+- `store` 의 코드는 애플리케이션 상태를 삭제하지 않고는 reloading이 불가능하다.
+
+- 액션에 대한 각각의 객체가 완벽히 독립적이지 않다.
+
+  ...
+
+
+
+- **action creators**
+  - Flux에서 액션 생성자를 그대로 가져옴
+  - **차이점** : Redux 액션 생성자는 `dispatcher`로 액션을 보내지 않는다. 대신, 포멧을 바꾼 뒤 액션을 돌려줌
+- **store**
+  - 상태 트리(state tree) 전체를 유지하는 책임
+  - 액션이 들어왔을 때, 상태 변화의 필요 여부는 위임
+
+
+
+
+
+- **reducer**
+  - 
 
 #### React Redux
 
