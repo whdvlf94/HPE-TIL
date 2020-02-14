@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://rss.joins.com/joins_homenews_list.xml",
+                type: "GET",
+                    // data: {
+                    //     key: '430156241533f1d058c603178cc3ca0e',
+                    //     targetDt: '20200201'
+                    //                    },
+
+                success: function(data) {
+                    console.log(data)
+                    console.log("success")
+                },
+                error: function(err) {
+                    console.log("err")
+                }
+            });
+
+            // 아래와 같이 사용할수도 있다.
+            // $.ajax("./data.html", {
+            //     success: function(data) {},
+            //     error: function() {}
+            // });
+            // 비동기 방식: 컴파일이 오래걸리는 데이터가 있어도 그 이외의 데이터들은 처리가 된다.
+        });
+    </script>
+</head>
+
+<body>
+
+
+</body>
+
+</html>
