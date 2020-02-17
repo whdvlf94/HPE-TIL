@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import YTSearch from 'youtube-api-search';
-import SearchBar from './Components/search_bar';
-import VideoList from './Components/video_list';
-import VideoDetail from './Components/video_detail';
-import _ from 'lodash'
+import ReactDOM from 'react-dom';
+import YTSearch from 'youtube-api-search'
+import _ from 'lodash';
+import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
-const API_KEY = 'AIzaSyAGBGeWwYqkg9d21m9cmwFubxoOjTVDNGI';
+const API_KEY = 'AIzaSyDhsBfgni4JKKwE0h_WU2hIBxgD28lCwxs';
 
 class App extends Component {
   constructor(props) {
-    super(props); // 부모의 생성자 함수를 호출
+    super(props);   // 부모의 생성자 함수를 호출
 
     this.state = {
       videos: [],
       selectedVideo: null
     }
 
-    this.videoSearch('surfboards');
+    this.videoSearch('soccer');
   }
 
-  videoSearch(term) {
+  videoSearch( term ) {
     YTSearch({ key: API_KEY, term: term }, (data) => {
       this.setState({
         videos: data,
@@ -29,36 +29,30 @@ class App extends Component {
     });
   }
 
-  handleSelect = (selectedVideo) => {
+  handleSelect =(selectedVideo) => {
+    // 선택된 video를 detail에 표시
     this.setState({
       selectedVideo: selectedVideo
-      // 선택한 video가 video detail 에 나타나게 하는 함수
     })
   }
 
-
   render() {
-    const _videoSearch = _.debounce((term) => {
-      this.videoSearch(term)
-    }, 300);
+
+    const _videoSearch = _.debounce((term) => {this.videoSearch(term)},300);
     
     return (
       <div>
-        <SearchBar onSearchTermChange={_videoSearch} />
-        <VideoDetail
-          video={this.state.selectedVideo} />
-        <VideoList
-          // onVideoSelect={this.handleSelect}
-          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
-          videos={this.state.videos}
-        />
+        <SearchBar onSearchTermChange = {_videoSearch}/>
+        <VideoDetail video={this.state.selectedVideo} />
+        <VideoList 
+          onVideoSelect={this.handleSelect}
+          videos={this.state.videos} />
       </div>
-    )
+    );
   }
 }
-ReactDom.render(<App />, document.querySelector('.container'));
 
 
 
-
+ReactDOM.render(<App />, document.querySelector('.container'));
 

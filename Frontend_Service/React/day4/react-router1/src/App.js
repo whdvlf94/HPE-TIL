@@ -1,27 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // router를 사용하기 위해 사용하는 명령어
-import Home from './routers/Home'
-import About from './routers/About'
+import Blog from './routers/Blog'
+import Youtube from './routers/Youtube'
 import Header from './components/Header';
-import Posts from './routers/Posts';
-import MyProfile from './routers/MyProfile';
-import Login from './routers/Login';
-import Search from './routers/Search';
-import NotFound from './routers/NotFound';
+import Weather from './routers/Weather';
+import Bitcoin from './routers/Bitcoin';
 
 const App = () => {
   return (
     <Router>
       <Header/>
       <Switch>
-      <Route exact path="/" component={Home}/>
-      <Route path="/about/:userid" component={About}/>
-      <Route path="/posts" component={Posts}/>
-      <Route path="/search" component={Search}/>
-      <Route path="/myprofile" component={MyProfile}/>
-      <Route path="/login" component={Login}/>
-      <Route component={NotFound}/>
+      <Route exact path="/Blog" component={Blog}/>
+      <Route path="/Youtube" component={Youtube}/>
+      <Route path="/Weather" component={Weather}/>
+      <Route path="/Bitcoin" component={Bitcoin}/>
+
       </Switch>
 
     </Router>

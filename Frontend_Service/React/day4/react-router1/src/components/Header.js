@@ -6,12 +6,12 @@ const Header = () => {
     return (
         <div className="Header">
 
-            <NavLink exact to="/" className="item">Home</NavLink>
-            <NavLink to="/about/whdvlf" className="item">About</NavLink>
-            <NavLink to="/posts" className="item">Posts</NavLink>
-            <NavLink to="/search" className="item">Search</NavLink>
-            <NavLink to="/myprofile" className="item">Myprofile</NavLink>
-            <NavLink to="/login" className="item">Login</NavLink>
+            <NavLink to="/Blog" className="item">Blog</NavLink>
+            <NavLink to="/youtube" className="item">Youtube</NavLink>
+            <NavLink to="/Weather" className="item">Weather</NavLink>
+            <NavLink to="/Bitcoin" className="item">Bitcoin</NavLink>
+            {/* <NavLink to="/myprofile" className="item">Myprofile</NavLink>
+            <NavLink to="/login" className="item">Login</NavLink> */}
 
 
         </div>
