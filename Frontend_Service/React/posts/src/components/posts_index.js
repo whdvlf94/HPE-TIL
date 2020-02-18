@@ -9,22 +9,22 @@ import { bindActionCreators } from 'redux';
 class PostsIndex extends Component {
 
   // define a lifecycle function for retrieve data  
-  componentDidMount () {
+  componentDidMount() {
     console.log('componentDidMount Called');
     this.props.fetchPosts();
     // fetchPosts가 실행될 때 마다 호출
   }
 
-  renderPosts(){
+  renderPosts() {
     // list -> 개별 <li>  태그로 출력
     return _.map(this.props.posts, post => {
-      return(
+      return (
 
-      <li className='list-group-item' key={post.id}>
-        <Link to={`/blogs/${post.id}`}>{'['+post.id+'] '}{post.title}</Link>
-      </li>
-      ) 
-  })
+        <li className='list-group-item' key={post.id}>
+          <Link to={`/blogs/${post.id}`}>{'[' + post.id + '] '}{post.title}</Link>
+        </li>
+      )
+    })
 
 
   }
@@ -38,7 +38,7 @@ class PostsIndex extends Component {
             to="/blogs/new">Add a Post</Link>
         </div>
 
-        <h3>Posts</h3> 
+        <h3>Posts</h3>
         <ul className="list-group">
           {this.renderPosts()}
         </ul>
@@ -48,14 +48,14 @@ class PostsIndex extends Component {
 }
 
 // 상태 관리
-function mapStateToProps (state) {
-  console.log(state.posts)
-  return{posts: state.posts}
+function mapStateToProps(state) {
+  console.log(state)
+  return { posts: state.posts }
 }
 
 // 액션 관리
-function mapDispatchToProps (dispatch) {
-  return bindActionCreators({fetchPosts},(dispatch))
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchPosts }, (dispatch))
 
 }
 

@@ -28,6 +28,7 @@ renderField(field) {
 }
 
 onSubmit(values) {
+  console.log(values)
   // submit values to creatPost function()
   this.props.createPost(values, () => {
     this.props.history.push('/');
