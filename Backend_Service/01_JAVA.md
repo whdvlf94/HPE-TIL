@@ -502,7 +502,7 @@ Elapsed time:1154
 // Stirngbuilder의 속도가 월등히 빠르다
 ```
 
-
+**※ Stringbuilder : 비동기식 , StringBuffer : 동기식**
 
 
 
