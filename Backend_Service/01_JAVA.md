@@ -9,7 +9,7 @@
 
 
 - **Class 구조**
-  - Nested Class(class 내에 존재하는 calss)
+  - Nested Class(class 내에 존재하는 class)
   - Field
   - Method
 

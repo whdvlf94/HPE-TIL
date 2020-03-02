@@ -148,7 +148,7 @@ public class Array {
 ---------------------------------------------------        
 [방법 2]
         String[] names = new String[] {"A", "BB", "CCC", "DDDD", "EEEEE"}
-        scores = new int[]{1,2,3,4,5,6,7};
+        int scores = new int[]{1,2,3,4,5,6,7};
         
         //int[] scores;
         //scores = {1,2,3,4,5,6,7}
@@ -428,6 +428,7 @@ Java 1.13
 package com.example.day2;
 
 public class Member {
+    
     
     //[nested class]
     // class 내에 존재하는 class , 최상위 class만 public으로 선언
