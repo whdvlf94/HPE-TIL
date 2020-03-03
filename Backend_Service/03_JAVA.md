@@ -187,7 +187,7 @@
 - **접근 권한 modifier** : private < X(default) < protected < public
   - **private** : 같은 class 에서만 사용 가능. 그 이외에는 접근 불가 ( 같은 class )
   - **X(default)** : 같은 패키지 내에 있으면 사용 가능 ( 같은 class + 같은 package )
-  - **protected** : 상속 관계가 있는 경우에만 접근 가능 ( 같은 class + 같은 package + 다른 package(단, 상속 관계)
+  - **protected** : 상속 관계가 있는 경우에만 접근 가능 ( 같은 class + 같은 package + 다른 package(단, 상속 관계))
   - **public** : 외부 어디에서든 접근 가능  (같은 class + 같은 package + 다른 package )
 
 ---
@@ -407,7 +407,7 @@ System.out.println(students[0] == students[1]);
 // 두 값의 주소 값을 비교하는 것이기 때문에 false로 출력된다.        
         
 System.out.println(students[0].equals(students[1]));
-// Student 파일에서 equals를 재정의(@overraide)하지 않았다면, 그 값은 false로 출력된다.
+// Student 파일에서 equals를 재정의(@override)하지 않았다면, 그 값은 false로 출력된다.
 // students[0], students[1]의 kor 값이 100으로 동일하기 때문에, 재정의한 equals에 의해서 true로 출력된다.
 
     }
@@ -536,8 +536,8 @@ true
   }
   
   ```
-
-
+  
+  
 
 - **Student - getName, setName**
 
@@ -634,7 +634,7 @@ true
 
 **※ 응용하기**
 
-`총점`의 `오름 차순` 순으로 정렬하고, 총점이 같은 경우 `이름`의 `내림 차순`으로 정렬하기
+`총점`의 `내림 차순` 순으로 정렬하고, 총점이 같은 경우 `이름`의 `오름 차순`으로 정렬하기
 
 
 
@@ -697,7 +697,7 @@ true
 
 
 - **ScoresApp.java**	=>    `Arrays.sort(students);`
-  - comparable의 경우 `ScoresApp.java` 에 `compareTo()` 메서드를 작성하기 때문에 `Arrays.sort(students)`에 `new MyComparator`를 추가하지 않아도 된다.
+  - comparable의 경우 `Student` 에 `compareTo()` 메서드를 작성하기 때문에 `Arrays.sort(students)`에 `new MyComparator`를 추가하지 않아도 된다.
 
 
 
@@ -845,18 +845,25 @@ true
   
   public class Demo4 {
   
-      public static Demo4 obj = new Demo4();
+      private static Demo4 obj = new Demo4();
+      //private static으로 obj(인스턴스 명)를 만든다.
+      //private는 같은 class 내에서는 인스턴스를 생성할 수 있다.
+      //외부에서 Demo4.getInstance 명령 실행 시, 인스턴스 생성과 동시에 그 값을 리턴해준다.
+      
       private Demo4() {}
+      // private 생성자로 외부에서 생성을 막는다.
+      // 즉, getInstance로만 접근할 수 있다.
+      
       public static synchronized Demo4 getInstance() {
-          if(obj == null) {
-              obj = new Demo4();
-          }
+  
               return obj;
       }
   
   }
   
   ```
+
+  **※ 생성자를 `private`로 선언해서 생성 불가하게 하고, `getInstance()`로 받아서 쓰도록 함**
 
   
 
@@ -869,7 +876,8 @@ true
   
   public class singletonDemo {
       public static void main(String[] args) {
-  //        Demo4 obj1 = new Demo4();
+  //Demo4 obj1 = new Demo4();
+  //private로 생성자 함수를 만들었기 때문에 위와 같은 new 연산자에 제약이 생긴다.
           Demo4 obj1 = Demo4.getInstance();
           Demo4 obj2 = Demo4.getInstance();
           System.out.println(obj1);
