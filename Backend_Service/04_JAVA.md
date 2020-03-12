@@ -190,6 +190,14 @@
 
 
 
+### Abstract
+
+: abstract 키워드로 지정된 `method` 나 `class`는 직접적으로 사용할 수 없고, 반드시 그것을 상속한 `class`를 만들고, 그렇게 상속한 `class`를 사용해야 한다.
+
+- 추상 메서드를 사용하려면 메서드를 사용하는 쪽(**Child class**)에서 반드시 오버라이딩해서 메서드의 구체적인 로직을 정의해야 한다.
+
+
+
 #### Parent
 
 ---
@@ -211,11 +219,23 @@
       public abstract void display();
       
       //body 내용들은 각 Child class에 포함되어 있다.
+      
+      
+      public abstract void d() {
+          System.out.println("Hello World!")
+    }
+      // 본체가 있는 메서드는 abstract 키워드를 가질 수 없다.
+      
+      
+      public void d() {
+          System.out.println("Hello World!");
+      }
+      // 추상 클래스 내에 추상 메서드가 아닌 메서드가 존재할 수 있다.
   
   }
   
   ```
-
+  
   
 
 
@@ -352,6 +372,18 @@
 
 
 
+### interface, implements
+
+: 추상 메서드만 별도로 분리하고 싶은 경우 interface와 implements를 이용하면 된다.
+
+- **interface** : 추상 클래스를 선언할 때, 원래는 `public abstract`  을 선언해야 하지만, `interface`로 선언했기 때문에 `public abstract`를 선언하지 않아도 된다. 
+  - 특정 클래스를 특정 인터페이스와 결합하면 그 클래스를 정의할 때 인터페이스에 정의된 메소드를 반드시 구현하도록 강제
+- **implements** : 기존에 `extends`로 부모 클래스를 참조했던 선언문 뒤에 `implements <추상 클래스>`를 추가하면 추상 메서드를 자식 클래스에서 참조하여 사용할 수 있다.
+
+
+
+
+
 #### Parent
 
 - **Member**
@@ -390,8 +422,8 @@
   // -> interface (추상 메소드 , 약속)으로 나타낼 수 있다.
   
   public interface IMemberFunc {
-  // interface로 선언했기 때문에 public abstract를 선언하지 않아도 된다.
   
+  // 원래는 public abstract void setPoint(int point) 을 선언해야 하지만, interface로 선언했기 때문에 public abstract를 선언하지 않아도 된다.
        void setPoint(int point);
        boolean isAuthorized();
        void display();
@@ -463,7 +495,7 @@
   
           //Array
   
-          // 부모의 reference 변수는 자식의 인스턴스를 가르킬 수 있다.
+          // 부모의 reference 변수는 자식의 인스턴스를 가리킬 수 있다.
           // Member m1 = mem1;
           // Member = new GeneralMember("user1", "A")
   
@@ -482,6 +514,9 @@
               ;
               member.display();
           }
+          
+          
+  System.out.println("---------------Object로 출력하기-----------------");
   
           //객체로 실행해 보기
           Object[] obj = new Object[3];
@@ -489,7 +524,6 @@
           obj[1] = new VipMember("vip3", "B");
           obj[2] = new VvipMember("vvip3");
   
-  System.out.println("---------------Object로 출력하기-----------------");
   
           for (Object o : obj) {
               //casting 작업
@@ -523,7 +557,23 @@
   ---------------Object로 출력하기-----------------
   user3, A, 60.0, Fri Feb 21 14:59:10 KST 2020
   vip3, B, 100.0, Fri Feb 21 14:59:10 KST 2020
-  vvip3, V1, 140.0, Fri Feb 21 14:59:10 KST 2020
+vvip3, V1, 140.0, Fri Feb 21 14:59:10 KST 2020
+  ```
+  
+
+
+
+- **interface**
+
+  ```java
+  GeneralMember mem1 = new GeneralMember("user1", "A");
+  mem1.setPoint(100);
+  mem1.display();
+  
+  
+  IMemberFunc mem1 = new GeneralMember("user1", "A");
+  mem1.setPoint(100);
+  mem1.display();
   ```
 
-  
+  - 두 개 모두 같은 값을 가져온다. IMemberFunc 은 인터페이스인데 무엇을 뜻하는 건지..?
