@@ -338,7 +338,8 @@ application.run(args);
 
   ```java
   @Component
-  public class MyRunner implements ApplicationRunner {     @Autowired     
+  public class MyRunner implements ApplicationRunner {     
+  @Autowired     
   Vega2kProperties vega2kProperties; 
    
       public void run(ApplicationArguments args) throws Exception {  
@@ -346,6 +347,8 @@ application.run(args);
           System.out.println(vega2kProperties.getFullName());  
           System.out.println(vega2kProperties.getAge());     } 
   } 
-  ```
-
+```
+  
+  - **properties**를 클래스로 설정했으므로 **@Autowired**을 이용해 **type**을 지정해준다.
   - **get Method**를 이용하여 **type-safe** 하게 클래스를 작성할 수 있다.
+
