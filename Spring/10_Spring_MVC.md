@@ -114,7 +114,7 @@ Controller : Servlet
   - **@RequestMapping** : HTTP 요청 URL을 처리할 **Controller 메서드 정의**
     - **@RequestMapping("/userList.do")** 요청이 들어오면 **HandlerMapping** 이 가지고 있는 매핑 정보를 통해 **ModelAndView userList() {..}** 와 매핑 해준다.
   - **@RequestParam** : query String 형태로 보낸 문자열의 값을 추출
-  - **ModelAndView(userList)** 또는 **Model(userDetail)** 타입을 이용하여 브라우저 상에서 JSP를 실행할 수 있다.
+  - **ModelAndView(userList)** 또는 **Model(userDetail)** 클래스를 이용하여 브라우저 상에서 JSP를 실행할 수 있다.
     - **Model** : **addAttribute(modelName, modelObject)**와 동일
 
 
@@ -160,9 +160,9 @@ Controller : Servlet
 - **userInsert.jsp**
 
   ```jsp
-  <!--  EL 에서 session scope은 session객체를 나타날때 -->
+  <!--  EL 에서 sessionScope은 session객체를 나타날때 -->
   						<td><c:forEach var="genderName"
-  								items="${sessionScope.genderList}">
+  								ㅜitems="${sessionScope.genderList}">
   								<input type="radio" name="gender" value="${genderName}">${genderName}
                          </c:forEach></td>
   					</tr>
@@ -190,7 +190,7 @@ Controller : Servlet
 
 : Controller 핵심 어노테이션, HTTP 요청에 포함된 파라미터를 모델 객체로 바인딩
 
-즉, 객체마다 **@ResquestParam**을 일일이 하지 않아도 된다.
+**즉,  사용자 등록 Form에 포함된 파라미터 들의 Data 값을 모두 추출하여, userVO 객체에 저장한다.**
 
 
 
@@ -242,7 +242,7 @@ Controller : Servlet
 
   - Spring 에서 CharacterEncodingFilter 클래스를 제공한다.
 
-- `web.xml`에 Filter 설정3
+- `web.xml`에 Filter 설정
 
   ```xml
   	<filter>
@@ -263,12 +263,16 @@ Controller : Servlet
 
 **응답(response) 데이터 인코딩**
 
-- response.setContentType("text/html;charset=utf-8")
-- <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+- **Servlet view** 
 
-- **contentType** : contentType에 설정한 **charset은 응답(response) 데이터의 인코딩** 
+  - response.setContentType("text/html;charset=utf-8")
 
-  **pageEncoding** : jsp에 포함된 코드에 대한 인코딩
+- **jsp view**
+
+  - <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+  - **contentType** : contentType에 설정한 **charset은 응답(response) 데이터의 인코딩** 
+
+  - **pageEncoding** : jsp에 포함된 코드에 대한 인코딩
 
 
 
@@ -291,6 +295,8 @@ Controller : Servlet
   	function deleteUser(userId){
   		var result = confirm(userId +" 사용자를 정말로 삭제하시겠습니까?");
   		if(result) {
+  	//기존 방식 : userDelete.do?userId=gildong (query string)
+  	//@PathVariable : userDelete.do/gildong
   			location.href = "userDelete.do/"+userId;
   		}
   	}
@@ -301,7 +307,6 @@ Controller : Servlet
 
   ```java
   //사용자 삭제 처리
-  	//기존 방식 : userDelete.do?userId=gildong (query string)
   	//@PathVariable : userDelete.do/gildong
   	@RequestMapping("userDelete.do/{id}")
   	public String userDelete(@PathVariable("id") String userid) {
@@ -310,8 +315,8 @@ Controller : Servlet
   		return "redirect:/userList.do";
   	}
   ```
-
   
+
 
 #### @PathVariable을 사용하기 위한 설정
 
@@ -359,7 +364,13 @@ Controller : Servlet
 
 : Server 를 시작하면 왜 Default Constructor 가 두 번 호출 되는가?
 
-- **@Controller** Bean의 scanning을 기존에는 `spring_beans.xml`에서 담당했지만 exclude 시킴
+- **springDispatcherServlet** 에도 `spring_beans.xml`이 호출되었기 때문
+
+
+
+**해결 방안)**
+
+- **@Controller Bean**의 scanning을 기존에는 `spring_beans.xml`에서 담당했지만 exclude 시킴
 - **@Controller Bean**의 scanning을 `spring_beans_web.xml`에서 include 시킴
 
 
