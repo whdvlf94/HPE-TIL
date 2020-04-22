@@ -277,15 +277,15 @@ application.run(args);
   	@Override
   	public void run(ApplicationArguments args) throws Exception {
   		
-  		System.out.println(">> Propery Name : " + name);
-  		System.out.println(">> Propery FullName : " + fullName);
-  		System.out.println(">> Propery Age : " + age);
+  		System.out.println(">> Property Name : " + name);
+  		System.out.println(">> Property FullName : " + fullName);
+  		System.out.println(">> Property Age : " + age);
       }
       
   ------------------------------------
-  >> Propery Name : 스프링
-  >> Propery FullName : 스프링 부트                           
-  >> Propery Age : 44
+  >> Property Name : 스프링
+  >> Property FullName : 스프링 부트                           
+  >> Property Age : 44
   ```
 
   
@@ -301,53 +301,3 @@ application.run(args);
   ```
 
 
-
-
-
-### 2.6) Type-Safe Property 클래스 작성
-
-> @ConfigurationProperties 사용
-
-
-
-- **@Value("${abc.name}")** 와 같이 **기존 properties**를 사용하는 경우 **type-safe 하지 않아(오타와 같은 오류를 잡아내지 못함)** 에러가 나는 경우가 많다.
-
-- **@ConfigurationProperties**를 사용하는 경우, **get Method**를 이용하면 되기 때문에 **type-safe** 하다.
-
-
-
-#### 예제)
-
-- **properties.java**
-
-  ```java
-  @Component 
-  @ConfigurationProperties("vega2k") 
-  public class Vega2kProperties {  
-      private String name;  
-      private int age;  
-      private String fullName;            
-      getter();         
-      setter(); 
-  } 
-  ```
-
-  - **properties**를 **class 로 설정**하며, **getter/setter 메서드를 이용**한다.
-
-- **MyRunner.java**
-
-  ```java
-  @Component
-  public class MyRunner implements ApplicationRunner {     
-  
-  @Autowired     
-  Vega2kProperties vega2kProperties; 
-   
-      public void run(ApplicationArguments args) throws Exception {  
-          System.out.println(vega2kProperties.getName());  
-          System.out.println(vega2kProperties.getFullName());  
-          System.out.println(vega2kProperties.getAge());     } 
-} 
-  ```
-  
-  - **get Method**를 이용하여 **type-safe** 하게 클래스를 작성할 수 있다.
