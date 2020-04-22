@@ -103,9 +103,9 @@ application.run(args);
 - **resources/banner.txt** 파일 생성
 
   ```
-  ================================================================
+  ===============================================================
   My Spring Boot  ${spring-boot.version} /  ${application.version} 
-  ================================================================
+  ===============================================================
   ```
 
   -  **${spring-boot.version} , ${application.version}** 등의 변수를 사용할 수 있음. 
@@ -144,7 +144,7 @@ application.run(args);
   	
   	@Override
   	public void onApplicationEvent(ApplicationStartingEvent event) {
-  		System.out.println("Spring Bean 컨테이너 생성에 호출됨 ApplicationStarting Event " + event);
+  		System.out.println("Spring Bean 컨테이너 생성에 호출됨 ApplicationStarting Event " + new Date(event.getTimestamp()));
   		
   	}
   
@@ -292,7 +292,7 @@ application.run(args);
 
 - 이 때, 우선 순위가 더 높은(**우선 순위 4**) **jar Terminal** 에서**Command Line Argument**을 사용하면 Value 값을 변경 할 수 있다.
 
-  - java -jar myspringboot-0.0.1-SNAPSHOT.jar --whdvlf94.name=javascript
+  - java -jar myspringboot-0.0.1-SNAPSHOT.jar **--whdvlf94.name=javascript**
 
   ```java
   >> Propery Name : javascript
@@ -339,6 +339,7 @@ application.run(args);
   ```java
   @Component
   public class MyRunner implements ApplicationRunner {     
+  
   @Autowired     
   Vega2kProperties vega2kProperties; 
    
@@ -346,9 +347,7 @@ application.run(args);
           System.out.println(vega2kProperties.getName());  
           System.out.println(vega2kProperties.getFullName());  
           System.out.println(vega2kProperties.getAge());     } 
-  } 
-```
+} 
+  ```
   
-  - **properties**를 클래스로 설정했으므로 **@Autowired**을 이용해 **type**을 지정해준다.
   - **get Method**를 이용하여 **type-safe** 하게 클래스를 작성할 수 있다.
-
