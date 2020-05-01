@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Account 등록</h2>
+	<form th:action="@{/addAccount}" method="post" th:object="${account}"> <!-- account = class name -->
+	<label>UserName : </label>	
+	<input type="text" th:field="*{username}"> <br/>
+	
+	<label>Password : </label>
+	<input type="password" th:field="*{password}"><br/>
+	
+	<input type="submit" value="Add Account">	
+	</form>
+
+</body>
+</html>

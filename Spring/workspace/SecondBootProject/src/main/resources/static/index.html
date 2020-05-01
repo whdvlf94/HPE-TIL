@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <h1>JQuery을 사용한 client</h1>
+   <script src="/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
+   <script>
+   
+   $(function(){
+      $.ajax("http://localhost:8085/users")
+      .done(function(msg){
+         console.log(msg);
+      })
+      .fail(function(err){
+         console.log(err);
+      });
+   });
+   </script>
+</body>
+</html>

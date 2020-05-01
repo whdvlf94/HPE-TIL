@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myspring.user.dao.mapper.UserMapper">
+<!-- <mapper namespace="userNS"> -->
+
+	<select id="selectUserById" parameterType="string" resultType="User">
+		select * from users where userid=#{value}
+	</select>
+
+	<select id="selectUserList" resultType="User">
+		select * from users order by userid
+	</select>
+
+	<insert id="insertUser" parameterType="User">
+		insert into users
+		values(#{userId},#{name},#{gender},#{city} )
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		update users set
+		name = #{name},
+		gender = #{gender},
+		city = #{city}
+		where userid = #{userId}
+	</update>
+
+	<delete id="deleteUser" parameterType="string">
+		delete from users where
+		userid = #{value}
+	</delete>
+
+	<insert id="insertPerson" parameterType="Person">
+		<selectKey resultType="integer" keyProperty="seq" order="BEFORE">
+			SELECT person_seq.nextval from dual
+		</selectKey>
+		INSERT INTO person (seq, ssn, name, address, phone)
+		VALUES(#{seq}, #{ssn}, #{name},#{address},#{phone})
+	</insert>
+	
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- AOP 설정 -->
+	
+	<!-- @Aspect 지원 -->
+<!-- 	<aop:aspectj-autoproxy/> -->
+	
+	<!-- XML 기반의 POJO 클래스를 이용한 AOP 구현 -->
+<!-- 	<bean id="ptAdvice" -->
+<!-- 		class="myspring.aop.xml.PerformanceTraceAdvice"></bean> -->
+<!-- 	<aop:config> -->
+<!-- 		<aop:aspect ref="ptAdvice"> -->
+<!-- 			<aop:around method="trace" -->
+<!-- 				pointcut="execution(public * myspring.user..*.*(..))" /> -->
+			<!-- execution([접근제한자 패턴] [타입 패턴] [이름 패턴] [메서드 명] (아규먼트) -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+
+
+	<!-- UserMapper 설정 -->
+	<!-- MapperScannerConfigurer 설정 -->
+	<!-- myspring.user.dao.mapper 패키지 아래에 @MyMapper 라는 어노테이션을 인터페이스를 모두 찾는다. -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="myspring.user.dao.mapper" />
+		<property name="annotationClass"
+			value="myspring.user.dao.mapper.MyMapper" />
+	</bean>
+
+	<!-- Mapper 설정 -->
+	<!-- 아래와 같이 설정하면 Mapper 인터페이스가 추가 될 때 마다 계속 Mapper 인터페이스 이름을 설정 해주어야 한다. -->
+	<!-- <bean id="userMapper" -->
+	<!-- class="org.mybatis.spring.mapper.MapperFactoryBean"> -->
+	<!-- <property name="mapperInterface" -->
+	<!-- value="myspring.user.dao.mapper.UserMapper" /> -->
+	<!-- <property name="sqlSessionTemplate" ref="sqlSession" /> -->
+	<!-- </bean> -->
+
+	<!-- SqlSessionTemplate 클래스를 Bean으로 등록 -->
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+
+		<!-- SqlSessionTemplate 클래스는 기본생성자가 없기 때문에 constructor-arg 를 통해 Constructor 
+			injection을 해준다. -->
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- SqlSessionFactoryBean 클래스를 Bean으로 등록 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:config/SqlMapConfig.xml" />
+		<property name="mapperLocations">
+
+			<list>
+				<!-- Mapper(Mapping) 파일은 SQL문 or Mapping을 설정하는 파일로서 복수 개의 파일이 존재할 수 있다 
+					따라서 <list>로 작성하여 추가해준다. -->
+				<value>classpath:config/*Mapper.xml</value>
+				<!-- config 아래에 있는 파일들 중 Mapper.xml로 끝나는 파일들을 리스트에 추가하겠다는 의미 -->
+			</list>
+		</property>
+	</bean>
+
+
+<!-- 	DataSource 구현체인 BasicDataSource 클래스를 Bean으로 등록 -->
+<!-- 	<bean id="dataSource" -->
+<!-- 	class="org.apache.commons.dbcp2.BasicDataSource"> -->
+<!-- 	<property name="driverClassName" value="${db.driverClass}" /> -->
+<!-- 	<property name="url" value="${db.url}" /> -->
+<!-- 	<property name="username" value="${db.username}" /> -->
+<!-- 	<property name="password" value="${db.password}" /> -->
+<!-- 	</bean> -->
+
+	<!-- Namespaces P 태그 이용하기. 자식 태그가 아닌 속성으로 properties 설정 -->
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		p:driverClassName="${db.driverClass}" p:url="${db.url}"
+		p:username="${db.username}" p:password="${db.password}" />
+
+	<!-- properties file 설정 -->
+	<context:property-placeholder
+		location="classpath:config/values.properties" />
+
+
+	<!-- Component Auto Scanning 설정 -->
+	<context:component-scan
+		base-package="myspring.user,myspring.aop">
+		<!-- @Controller 어노테이션을 선언한 컴포넌트는 제외하겠다. -->
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+
+
+
+
+
+	<!-- StringPrinter 클래스를 Bean으로 설정 -->
+	<bean id="sPrinter" class="myspring.di.xml.StringPrinter" />
+
+	<!-- ConsolePrinter 클래스를 Bean으로 설정 -->
+	<bean id="cPrinter" class="myspring.di.xml.ConsolePrinter" />
+
+	<!-- Hello 클래스를 Bean으로 설정 -->
+	<bean id="hello" class="myspring.di.xml.Hello"> <!-- scope의 default값은 singleton이다. -->
+
+		<!-- setter injection : default constructor를 사용해서 객체 생성 -->
+
+		<!--Spring에서 지원하는 경우, 아래의 경우 String 일 때는 Value값을 통해 대입 -->
+		<property name="name" value="Spring"></property>
+		<property name="printer" ref="sPrinter"></property>
+	</bean>
+
+
+	<bean id="helloC" class="myspring.di.xml.Hello">
+		<!-- constructor injection : argument가 있는(Overload)를 사용해서 객체를 생성 -->
+
+		<!-- value, ref에 해당하는 값은 메서드 이름이 아닌 argument의 이름 값을 받는다. -->
+		<constructor-arg index="0" value="생성자" />
+		<constructor-arg index="1" ref="cPrinter" />
+		<property name="names"> <!-- setName() -->
+			<list>
+				<value>aaa</value>
+				<value>bbb</value>
+				<value>ccc</value>
+
+			</list>
+		</property>
+		<property name="ages"> <!-- setAges(Map<String, Integer>) -->
+			<map>
+				<entry key="java" value="10" />
+				<entry key="sql" value="20" />
+				<entry key="c" value="30" />
+			</map>
+		</property>
+
+	</bean>
+
+</beans>

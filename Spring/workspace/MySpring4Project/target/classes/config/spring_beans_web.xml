@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+	<!-- DispatcherServlet의 url-pattern과 DefaultServlet의 url-pattern(tomcat)의 
+		충돌 문제를 해결 해주는 설정 tomcat 의 url-pattern이 / 으로 이미 설정되어 있기 때문 -->
+	<mvc:default-servlet-handler />
+
+	<!-- XML, JSON Data support -->
+	<mvc:annotation-driven />
+
+	<!-- Component Auto Scanning 설정 -->
+	<context:component-scan
+		base-package="myspring.user">
+		<!-- @Controller 어노테이션을 선언한 컴포넌트만 포함하겠다. -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<!-- JSP 확장명 생략할 수 있는 설정 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>
