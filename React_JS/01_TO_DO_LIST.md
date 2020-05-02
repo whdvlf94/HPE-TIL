@@ -2,8 +2,6 @@
 
 
 
-
-
 ## 흐름
 
 - **components 디렉토리 생성** → `TodoListTemplate.js` →  `App.js` →`Form.js` → `TodoItemList.js` → `TodoItem.js`
@@ -157,6 +155,7 @@
   
   export default Form;
   ```
+
   - `App.js` 에서 **TodoListTemplate**에  **\<Form todo="todo">** 를 입력하면, `Form,js`에서 이를 **{todo}**로 상속받는다. `localhost:3000`에 접속하면, **Form** 영역에 todo 라는 텍스트 값이 출력된 것을 확인할 수 있다.
 
 
