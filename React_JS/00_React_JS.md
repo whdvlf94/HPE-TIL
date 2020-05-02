@@ -17,7 +17,7 @@
 ### 1.1) Nested Element
 
 - **Component**에서 여러 **Element**를 렌더링 할 때, 이 **Element** 들은 필수적으로 **Container Element** 안에 포함시켜 줘야 한다.
-  - **Container Element** : `<div>` 혹은 `React.Fragment>`
+  - **Container Element** : `<div>` 혹은 `<React.Fragment>`
 
 
 
@@ -222,7 +222,7 @@ propTypes 생성 단축키 : rpt
 ### 2.2) State
 
 - 컴포넌트 내부에서 읽거나 변경할 수 있는 값을 사용하기 위해서는 **State**를 사용해야 한다.
-- **State** 는 언제나 기본 값을 설정할 수 있으며, **this.setState()**메서드를 통해서만 값을 변경할 수 있다.
+- **State** 는 언제나 기본 값을 설정할 수 있으며, **this.setState()** 메서드를 통해서만 값을 변경할 수 있다.
 
 
 
@@ -523,6 +523,6 @@ propTypes 생성 단축키 : rpt
   ```
 
   - **\<li>** 태그 더블 클릭 시, **handleRemove()** 메서드에 **idx** 키 값을 넘겨준다.
-  - **handleRemove()**에서 **키 값**을 받아 **messages** 배열의 **인덱스 값**과 비교한다.
+  - **handleRemove()** 에서 **키 값**을 받아 **messages** 배열의 **인덱스 값**과 비교한다.
   - **filter** 를 이용해 **키 값**과 **인덱스 값**이 다른 것만 배열에 남겨둔다.
 
