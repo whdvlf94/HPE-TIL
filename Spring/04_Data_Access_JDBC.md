@@ -112,7 +112,7 @@ Statement stmt = conn.createStatement();
   ```java
   String query = "UPDATE EMP" +
       		   "SET LAST_NAME  =  'KIM' "+                           			"WHERE  ID =  '100000'  ";  
-int result = stmt.executeUpdate( query ); 
+	int result = stmt.executeUpdate( query ); 
   ```
   
   
