@@ -210,4 +210,4 @@ C:\Users\HPE\Work\kafka_2.12-2.3.1>.\bin\windows\kafka-console-producer.bat --br
 
   
 
-![fallback](./static/200516_fallback.png)
+![fallback](https://user-images.githubusercontent.com/58682321/82108732-8d87bf00-976b-11ea-87c3-6963e52dcb3a.PNG)
