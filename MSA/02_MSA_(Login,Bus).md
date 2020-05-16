@@ -19,6 +19,7 @@ service/UserServiceImpl
 
 myapp-api-user , myapp-zuul-gateway
 - bootstrap.yml 추가 : gateway.ip , token.secret 정보 포함되어 있음
+	:bootstrap은 application.yml보다 높은 우선순위를 가지고 있다.
 (※ Consfig Server에 application.yml을 설정하여, 각 프로젝트에서 이를 호출하여 사용하도록 한다.)
 ```
 
@@ -93,16 +94,18 @@ myapp-api-user , myapp-zuul-gateway
           this.env = env;
           super.setAuthenticationManager(authenticationManager);
       }
-  
+  	
+      //email, password를 가지고 DB에서 자료 검색
       @Override
       public Authentication attemptAuthentication(HttpServletRequest request,
                                                   HttpServletResponse response) throws AuthenticationException {
           try {
-              //Postman을 통해 입력받은 값을 LoninRequestModel 객체와 Mapping
+              
               LoginRequestModel creds = new ObjectMapper()
                       .readValue(request.getInputStream(), LoginRequestModel.class);
   
-              //입력받은 email, password를 이용하여 사용자에게 Token을 발급
+              
+              //authenticate() : 입력한 값이 DB에 저장되어 있는지 확인하는 과정
               return getAuthenticationManager().authenticate(
                       new UsernamePasswordAuthenticationToken(
                               creds.getEmail(),
@@ -134,9 +137,9 @@ myapp-api-user , myapp-zuul-gateway
           res.addHeader("userId", userDetail.getUserId());
       }
   
-  }
+}
   ```
-
+  
   
 
 
@@ -241,7 +244,7 @@ C:\Users\HPE\Work\git\MyAppConfiguration>docker run -d --name rabbitmq -p 5672:5
 
 ---
 
-> **RabbitMQ Server**  → **Discovery Server** → **Zuul Server** → **User-WS**
+> **RabbitMQ Server** →  **Config Server** → **Discovery Server** → **Zuul Server** → **User-WS**
 
 
 
